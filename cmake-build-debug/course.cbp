@@ -182,6 +182,12 @@
 		<Unit filename="D:/Dafa/Study/OP/course/libs/data_structures/unordered_array_set/unordered_array_set.h">
 			<Option target="data_structures"/>
 		</Unit>
+		<Unit filename="D:/Dafa/Study/OP/course/libs/data_structures/vector/vector.c">
+			<Option target="data_structures"/>
+		</Unit>
+		<Unit filename="D:/Dafa/Study/OP/course/libs/data_structures/vector/vector.h">
+			<Option target="data_structures"/>
+		</Unit>
 		<Unit filename="D:/Dafa/Study/OP/course/main.c">
 			<Option target="course"/>
 		</Unit>

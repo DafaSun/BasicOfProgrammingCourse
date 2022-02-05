@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "D:/Dafa/Study/OP/course/libs/data_structures/matrix/matrix.c" "D:/Dafa/Study/OP/course/cmake-build-debug/libs/data_structures/CMakeFiles/data_structures.dir/matrix/matrix.c.obj"
   "D:/Dafa/Study/OP/course/libs/data_structures/ordered_array_set/ordered_array_set.c" "D:/Dafa/Study/OP/course/cmake-build-debug/libs/data_structures/CMakeFiles/data_structures.dir/ordered_array_set/ordered_array_set.c.obj"
   "D:/Dafa/Study/OP/course/libs/data_structures/unordered_array_set/unordered_array_set.c" "D:/Dafa/Study/OP/course/cmake-build-debug/libs/data_structures/CMakeFiles/data_structures.dir/unordered_array_set/unordered_array_set.c.obj"
+  "D:/Dafa/Study/OP/course/libs/data_structures/vector/vector.c" "D:/Dafa/Study/OP/course/cmake-build-debug/libs/data_structures/CMakeFiles/data_structures.dir/vector/vector.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
