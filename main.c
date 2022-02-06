@@ -35,7 +35,7 @@ void test_atVector_notEmptyVector() {
     vector v = createVector(3);
     pushBack(&v, 1);
     pushBack(&v, 4);
-    assert(atVector(&v, 2)==v.data+2*sizeof(int));
+    assert(atVector(&v, 2) == v.data + 2 * sizeof(int));
 }
 
 void test_atVector_requestToLastElement() {
@@ -43,19 +43,19 @@ void test_atVector_requestToLastElement() {
     pushBack(&v, 1);
     pushBack(&v, 4);
     pushBack(&v, 9);
-    assert(atVector(&v, 3)==v.data+3*sizeof(int));
+    assert(atVector(&v, 3) == v.data + 3 * sizeof(int));
 }
 
 void test_back_oneElementInVector() {
     vector v = createVector(1);
     pushBack(&v, 1);
-    assert(back(&v)==v.data+1*sizeof(int));
+    assert(back(&v) == v.data + 1 * sizeof(int));
 }
 
 void test_front_oneElementInVector() {
     vector v = createVector(1);
     pushBack(&v, 1);
-    assert(front(&v)==v.data+1*sizeof(int));
+    assert(front(&v) == v.data + 1 * sizeof(int));
 }
 
 void test() {

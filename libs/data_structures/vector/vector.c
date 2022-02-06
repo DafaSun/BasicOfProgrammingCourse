@@ -37,7 +37,7 @@ void clear(vector *v) {
 }
 
 void shrinkToFit(vector *v) {
-    free(v->data + v->size);
+    free(v->data + v->size * sizeof(int));
 }
 
 void deleteVector(vector *v) {
@@ -81,11 +81,11 @@ int *atVector(vector *v, size_t index) {
     return v->data + index * sizeof(int);
 }
 
-int* back(vector *v){
+int *back(vector *v) {
     return atVector(v, v->size);
 }
 
-int* front(vector *v){
+int *front(vector *v) {
     return atVector(v, 1);
 }
 
