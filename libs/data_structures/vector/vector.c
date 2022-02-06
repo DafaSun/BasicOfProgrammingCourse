@@ -29,7 +29,7 @@ void reserve(vector *v, size_t newCapacity) {
         }
         realloc(v->data, newCapacity);
     }
-    v->capacity=newCapacity;
+    v->capacity = newCapacity;
 }
 
 void clear(vector *v) {
@@ -57,7 +57,7 @@ int getVectorValue(vector *v, size_t i) {
 }
 
 void pushBack(vector *v, int x) {
-    if (v->size == v->capacity){
+    if (v->size == v->capacity) {
         if (v->capacity == 0)
             reserve(v, 1);
         else
@@ -73,5 +73,19 @@ void popBack(vector *v) {
         exit(1);
     }
     v->size--;
+}
+
+int *atVector(vector *v, size_t index) {
+    if (index > v->size)
+        fprintf(stderr, "IndexError: a[%lld] is not exists ", index);
+    return v->data + index * sizeof(int);
+}
+
+int* back(vector *v){
+    return atVector(v, v->size);
+}
+
+int* front(vector *v){
+    return atVector(v, 1);
 }
 
