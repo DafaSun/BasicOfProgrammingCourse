@@ -203,4 +203,14 @@ void swapRowsWithMaxAndMinElement(matrix m) {
     swapRows(m, posMaxValue.rowIndex, posMinValue.rowIndex);
 }
 
+int getMax(int *a, int n) {
+    int max = a[0];
+    for (int i = 1; i < n; i++)
+        if (a[i] > max)
+            max = a[i];
+    return max;
+}
 
+void sortRowsByMaxElement(matrix m) {
+    insertionSortRowsMatrixByRowCriteria(m, getMax);
+}
