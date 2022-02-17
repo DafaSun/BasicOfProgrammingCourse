@@ -6,9 +6,15 @@
 
 #IncludeRegexTransform: 
 
+D:/Dafa/Study/OP/course/libs/data_structures/matrix/matrix.h
+stdio.h
+-
+stdbool.h
+-
+
 D:/Dafa/Study/OP/course/main.c
 stdio.h
 -
-stdio.h
--
+libs/data_structures/matrix/matrix.h
+D:/Dafa/Study/OP/course/libs/data_structures/matrix/matrix.h
 

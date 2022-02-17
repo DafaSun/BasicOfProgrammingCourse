@@ -82,4 +82,7 @@ matrix createMatrixFromArray(const int *a, int nRows, int nCols);
 //возвращает указатель на нулевую матрицу массива из nMatrices матриц, размещенных в динамической памяти, построенных из элементов массива a.
 matrix *createArrayOfMatrixFromArray(const int *values, size_t nMatrices, size_t nRows, size_t nCols);
 
+//обменивает местами строки матрицы m, в которых находятся максимальный и минимальный элементы.
+void swapRowsWithMaxAndMinElement(matrix m);
+
 #endif //COURSE_MATRIX_H

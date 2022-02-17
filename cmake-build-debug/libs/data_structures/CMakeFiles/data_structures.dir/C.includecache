@@ -6,15 +6,13 @@
 
 #IncludeRegexTransform: 
 
-D:/Dafa/Study/OP/course/libs/data_structures/vector/vector.c
-vector.h
-D:/Dafa/Study/OP/course/libs/data_structures/vector/vector.h
-stdlib.h
--
+D:/Dafa/Study/OP/course/libs/data_structures/matrix/matrix.c
+matrix.h
+D:/Dafa/Study/OP/course/libs/data_structures/matrix/matrix.h
 malloc.h
 -
 
-D:/Dafa/Study/OP/course/libs/data_structures/vector/vector.h
+D:/Dafa/Study/OP/course/libs/data_structures/matrix/matrix.h
 stdio.h
 -
 stdbool.h
