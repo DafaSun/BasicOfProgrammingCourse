@@ -89,8 +89,13 @@ void swapRowsWithMaxAndMinElement(matrix m);
 //возвращает наибольший по значению элемент в массиве a размера n.
 int getMax(int *a, int n);
 
-//Упорядочивает строки матрицы m по неубыванию наибольших элементов строк.
+//упорядочивает строки матрицы m по неубыванию наибольших элементов строк.
 void sortRowsByMaxElement(matrix m);
 
+//возвращает наименьший по значению элемент в массиве a размера n.
+int getMin(int *a, int n);
+
+//упорядочивает столбцы матрицы m по неубыванию минимальных элементов столбцов.
+void sortColsByMinElement(matrix m);
 
 #endif //COURSE_MATRIX_H
