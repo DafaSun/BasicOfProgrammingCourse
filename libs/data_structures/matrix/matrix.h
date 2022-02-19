@@ -120,5 +120,10 @@ void transposeIfMatrixHasNotEqualSumOfRows(matrix m);
 //возвращает значение ’истина’, если матрицы m1 и m2 является взаимно обратными, ложь – в противном случае.
 bool isMutuallyInverseMatrices(matrix m1, matrix m2);
 
+//возвращает минимальное значение из a и b.
+int min(int a, int b);
+
+//возращает сумму максимальных элементов всех псевдодиагоналей матрицы m.
+long long findSumOfMaxesOfPseudoDiagonal(matrix m);
 
 #endif //COURSE_MATRIX_H
