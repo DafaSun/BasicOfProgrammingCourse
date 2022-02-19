@@ -393,3 +393,4 @@ int countEqClassesByRowsSum(matrix m) {
         sumOfElementOfRow[i] = getSum(m.values[i], m.nCols);
     return countNUnique(sumOfElementOfRow, m.nRows);
 }
+
