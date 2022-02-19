@@ -285,3 +285,7 @@ void transposeIfMatrixHasNotEqualSumOfRows(matrix m) {
     if (isUnique(sumElementInTheRow, m.nRows) == true)
         transposeSquareMatrix(m);
 }
+
+bool isMutuallyInverseMatrices(matrix m1, matrix m2) {
+    return isEMatrix(mulMatrices(m1, m2));
+}
