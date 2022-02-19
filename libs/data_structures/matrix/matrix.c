@@ -259,11 +259,12 @@ int comp(const void *a, const void *b) {
         return 0;
     else if (p1 < p2)
         return -1;
-    else return 1;
+    else
+        return 1;
 }
 
 bool isUnique(long long *a, int n) {
-    qsort(a, n, sizeof(int), comp);
+    qsort(&a, n, sizeof(int), comp);
     for (int i = 0; i < n - 1; i++)
         if (a[i] == a[i + 1])
             return false;
@@ -363,3 +364,32 @@ void sortByDistances(matrix m) {
     insertionSortRowsMatrixByRowCriteriaF(m, getDistance);
 }
 
+int cmp_long_long(const void *pa, const void *pb) {
+    int *a = (int *) pa;
+    int *b = (int *) pb;
+    if (a == b)
+        return 0;
+    else if (a < b)
+        return -1;
+    else
+        return 1;
+}
+
+int countNUnique(long long *a, int n) {
+    qsort(&a, n, sizeof(int), cmp_long_long);
+    long long e = a[0];
+    int count = 1;
+    for (int i = 1; i < n; i++)
+        if (a[i] != e) {
+            count++;
+            e = a[i];
+        }
+    return count;
+}
+
+int countEqClassesByRowsSum(matrix m) {
+    long long sumOfElementOfRow[m.nRows];
+    for (int i = 0; i < m.nRows; i++)
+        sumOfElementOfRow[i] = getSum(m.values[i], m.nCols);
+    return countNUnique(sumOfElementOfRow, m.nRows);
+}

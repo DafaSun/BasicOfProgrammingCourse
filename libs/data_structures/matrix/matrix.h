@@ -140,6 +140,14 @@ void insertionSortRowsMatrixByRowCriteriaF(matrix m, float (*criteria)(int *, in
 //упорядочивает точки по неубыванию их расстояний до начала координат.
 void sortByDistances(matrix m);
 
+//
+int cmp_long_long(const void *pa, const void *pb);
+
+//
+int countNUnique(long long *a, int n);
+
+//
+int countEqClassesByRowsSum(matrix m);
 
 
 #endif //COURSE_MATRIX_H
