@@ -105,7 +105,16 @@ matrix mulMatrices(matrix m1, matrix m2);
 //обращает все элементы матрицы m в ноль.
 void makeZeroMatrix(matrix m);
 
-//Если данная квадратная матрица m симметрична, то заменить m ее квадратом.
+//если данная квадратная матрица m симметрична, то заменить m ее квадратом.
 void getSquareOfMatrixIfSymmetric(matrix *m);
+
+//возвращает значение ’истина’, если в массиве а размера n нет одинаковых элементов, ложь – в противном случае.
+bool isUnique(long long *a, int n);
+
+//возращает сумму всех элементов массива а размера n.
+long long getSum(int *a, int n);
+
+//если среди сумм элементов строк матрицы m нет равных, то транспонировать матрицу m.
+void transposeIfMatrixHasNotEqualSumOfRows(matrix m);
 
 #endif //COURSE_MATRIX_H

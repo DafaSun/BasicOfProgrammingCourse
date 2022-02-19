@@ -33,7 +33,7 @@ void freeMemMatrices(matrix *ms, int nMatrices) {
 
 void inputMatrix(matrix m) {
     for (int i = 0; i < m.nRows; i++)
-        for (int j = 0; j < m.nCols; i++)
+        for (int j = 0; j < m.nCols; j++)
             scanf("%d", &m.values[i][j]);
 }
 
@@ -44,7 +44,7 @@ void inputMatrices(matrix *ms, int nMatrices) {
 
 void outputMatrix(matrix m) {
     for (int i = 0; i < m.nRows; i++)
-        for (int j = 0; j < m.nCols; i++)
+        for (int j = 0; j < m.nCols; j++)
             printf("%d", m.values[i][j]);
 }
 
@@ -69,7 +69,7 @@ void swapColumns(matrix m, int j1, int j2) {
 
 void insertionSortRowsMatrixByRowCriteria(matrix m, int (*criteria)(int *, int)) {
     int resultOfCriteria[m.nRows];
-    for (int i = 0; i < m.nRows; ++i)
+    for (int i = 0; i < m.nRows; i++)
         resultOfCriteria[i] = criteria(m.values[i], m.nCols);
     for (int i = 1; i < m.nRows; i++) {
         int t = resultOfCriteria[i];
@@ -85,9 +85,9 @@ void insertionSortRowsMatrixByRowCriteria(matrix m, int (*criteria)(int *, int))
 
 void insertionSortColsMatrixByColCriteria(matrix m, int (*criteria)(int *, int)) {
     int resultOfCriteria[m.nCols];
-    for (int i = 0; i < m.nCols; ++i) {
+    for (int i = 0; i < m.nCols; i++) {
         int a[m.nRows];
-        for (int j = 0; j < m.nRows; ++j)
+        for (int j = 0; j < m.nRows; j++)
             a[j] = m.values[j][i];
         resultOfCriteria[i] = criteria(&a[i], m.nRows);
     }
@@ -157,8 +157,8 @@ void transposeSquareMatrix(matrix m) {
 position getMinValuePos(matrix m) {
     int rowIndexOfMinValue = 0;
     int colIndexOfMinValue = 0;
-    for (int i = 0; i < m.nRows; ++i)
-        for (int j = 0; j < m.nCols; ++j)
+    for (int i = 0; i < m.nRows; i++)
+        for (int j = 0; j < m.nCols; j++)
             if (m.values[i][j] < m.values[rowIndexOfMinValue][colIndexOfMinValue]) {
                 rowIndexOfMinValue = i;
                 colIndexOfMinValue = j;
@@ -169,8 +169,8 @@ position getMinValuePos(matrix m) {
 position getMaxValuePos(matrix m) {
     int rowIndexOfMaxValue = 0;
     int colIndexOfMaxValue = 0;
-    for (int i = 0; i < m.nRows; ++i)
-        for (int j = 0; j < m.nCols; ++j)
+    for (int i = 0; i < m.nRows; i++)
+        for (int j = 0; j < m.nCols; j++)
             if (m.values[i][j] > m.values[rowIndexOfMaxValue][colIndexOfMaxValue]) {
                 rowIndexOfMaxValue = i;
                 colIndexOfMaxValue = j;
@@ -251,4 +251,37 @@ matrix mulMatrices(matrix m1, matrix m2) {
 void getSquareOfMatrixIfSymmetric(matrix *m) {
     if (isSymmetricMatrix(*m) == true)
         *m = mulMatrices(*m, *m);
+}
+
+int comp(const void *a, const void *b) {
+    int *p1 = (int *) a;
+    int *p2 = (int *) b;
+    if (p1 == p2)
+        return 0;
+    else if (p1 < p2)
+        return -1;
+    else return 1;
+}
+
+bool isUnique(long long *a, int n) {
+    qsort(a, n, sizeof(int), comp);
+    for (int i = 0; i < n - 1; i++)
+        if (a[i] == a[i + 1])
+            return false;
+    return true;
+}
+
+long long getSum(int *a, int n) {
+    long long sum = 0;
+    for (int i = 0; i < n; i++)
+        sum += a[i];
+    return sum;
+}
+
+void transposeIfMatrixHasNotEqualSumOfRows(matrix m) {
+    long long sumElementInTheRow[m.nRows];
+    for (int i = 0; i < m.nRows; i++)
+        sumElementInTheRow[i] = getSum(m.values[i], m.nCols);
+    if (isUnique(sumElementInTheRow, m.nRows) == true)
+        transposeSquareMatrix(m);
 }
