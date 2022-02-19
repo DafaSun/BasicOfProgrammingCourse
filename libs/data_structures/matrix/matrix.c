@@ -3,7 +3,6 @@
 //
 
 #include "matrix.h"
-#include <malloc.h>
 
 matrix getMemMatrix(int nRows, int nCols) {
     int **values = (int **) malloc(sizeof(int *) * nRows);
@@ -336,3 +335,31 @@ int getMinInArea(matrix m) {
     }
     return min;
 }
+
+float getDistance(int *a, int n) {
+    double d = 0;
+    for (int i = 0; i < n; i++)
+        d += pow(a[i], 2);
+    return sqrt(d);
+}
+
+void insertionSortRowsMatrixByRowCriteriaF(matrix m, float (*criteria)(int *, int)) {
+    float resultOfCriteria[m.nRows];
+    for (int i = 0; i < m.nRows; i++)
+        resultOfCriteria[i] = criteria(m.values[i], m.nCols);
+    for (int i = 1; i < m.nRows; i++) {
+        float t = resultOfCriteria[i];
+        int j = i;
+        while (j > 0 && resultOfCriteria[j - 1] > t) {
+            resultOfCriteria[j] = resultOfCriteria[j - 1];
+            swapRows(m, j, j - 1);
+            j--;
+        }
+        resultOfCriteria[j] = t;
+    }
+}
+
+void sortByDistances(matrix m) {
+    insertionSortRowsMatrixByRowCriteriaF(m, getDistance);
+}
+

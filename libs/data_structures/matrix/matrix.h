@@ -8,6 +8,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <malloc.h>
+#include <math.h>
 
 typedef struct matrix {
     int **values; // элементы матрицы
@@ -128,6 +130,16 @@ long long findSumOfMaxesOfPseudoDiagonal(matrix m);
 
 //возращает минимальный элемент матрицы m в выделенной области (над максимальным элементом).
 int getMinInArea(matrix m);
+
+//
+float getDistance(int *a, int n);
+
+//
+void insertionSortRowsMatrixByRowCriteriaF(matrix m, float (*criteria)(int *, int));
+
+//упорядочивает точки по неубыванию их расстояний до начала координат.
+void sortByDistances(matrix m);
+
 
 
 #endif //COURSE_MATRIX_H
