@@ -146,5 +146,8 @@ int countNUnique(long long *a, int n);
 //возвращает количество строк прямоугольной матрицы m с равными суммами их элементов.
 int countEqClassesByRowsSum(matrix m);
 
+//количество элементов матрицы m, больших суммы остальных элементов своего столбца.
+int getNSpecialElement(matrix m);
+
 
 #endif //COURSE_MATRIX_H
