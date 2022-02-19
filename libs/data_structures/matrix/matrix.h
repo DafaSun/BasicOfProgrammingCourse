@@ -6,6 +6,7 @@
 #define COURSE_MATRIX_H
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
 
 typedef struct matrix {
@@ -97,5 +98,14 @@ int getMin(int *a, int n);
 
 //упорядочивает столбцы матрицы m по неубыванию минимальных элементов столбцов.
 void sortColsByMinElement(matrix m);
+
+//возвращает матрицу, равную произведению матрицы m1 на матрицу m2.
+matrix mulMatrices(matrix m1, matrix m2);
+
+//обращает все элементы матрицы m в ноль.
+void makeZeroMatrix(matrix m);
+
+//Если данная квадратная матрица m симметрична, то заменить m ее квадратом.
+void getSquareOfMatrixIfSymmetric(matrix *m);
 
 #endif //COURSE_MATRIX_H

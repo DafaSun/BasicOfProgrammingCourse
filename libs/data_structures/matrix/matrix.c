@@ -215,7 +215,7 @@ void sortRowsByMaxElement(matrix m) {
     insertionSortRowsMatrixByRowCriteria(m, getMax);
 }
 
-int getMin(int *a, int n){
+int getMin(int *a, int n) {
     int min = a[0];
     for (int i = 1; i < n; i++)
         if (a[i] < min)
@@ -223,6 +223,32 @@ int getMin(int *a, int n){
     return min;
 }
 
-void sortColsByMinElement(matrix m){
+void sortColsByMinElement(matrix m) {
     insertionSortColsMatrixByColCriteria(m, getMin);
+}
+
+void makeZeroMatrix(matrix m) {
+    for (int i = 0; i < m.nRows; i++)
+        for (int j = 0; j < m.nCols; j++)
+            m.values[i][j] = 0;
+}
+
+matrix mulMatrices(matrix m1, matrix m2) {
+    if (m1.nCols != m2.nRows) {
+        fprintf(stderr, "cannot be multiplied ");
+        exit(1);
+    }
+    matrix m = getMemMatrix(m1.nRows, m2.nCols);
+    makeZeroMatrix(m);
+    int n = m1.nCols;
+    for (int i = 0; i < m1.nRows; i++)
+        for (int j = 0; j < m2.nCols; j++)
+            for (int k = 0; k < n; k++)
+                m.values[i][j] += m1.values[k][j] * m2.values[i][k];
+    return m;
+}
+
+void getSquareOfMatrixIfSymmetric(matrix *m) {
+    if (isSymmetricMatrix(*m) == true)
+        *m = mulMatrices(*m, *m);
 }
