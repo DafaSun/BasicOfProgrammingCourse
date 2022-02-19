@@ -126,4 +126,8 @@ int min(int a, int b);
 //возращает сумму максимальных элементов всех псевдодиагоналей матрицы m.
 long long findSumOfMaxesOfPseudoDiagonal(matrix m);
 
+//возращает минимальный элемент матрицы m в выделенной области (над максимальным элементом).
+int getMinInArea(matrix m);
+
+
 #endif //COURSE_MATRIX_H
