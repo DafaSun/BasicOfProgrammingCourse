@@ -477,3 +477,46 @@ void printMatrixWithMaxZeroRows(matrix *ms, int nMatrix) {
         if (countZeroRows(ms[i]) == maxZeroRows)
             outputMatrix(ms[i]);
 }
+
+void outputMatrixF(matrixF m) {
+    for (int i = 0; i < m.nRows; i++)
+        for (int j = 0; j < m.nCols; j++)
+            printf("%f", m.values[i][j]);
+}
+
+float absF(float x){
+    if (x<0)
+        x=-x;
+    return x;
+}
+
+float maxAbsInArray(float *a, int n){
+    float maxAbs=absF(a[0]);
+    for (int i=1; i<n; i++){
+        float absOfElement=abs(a[i]);
+        if (absOfElement>maxAbs)
+            maxAbs=absOfElement;
+    }
+    return maxAbs;
+}
+
+float maxAbsInMatrix(matrixF m){
+    float maxAbs= maxAbsInArray(m.values[0], m.nCols);
+    for (int i=1; i<m.nRows; i++){
+        float maxAbsInRow= maxAbsInArray(m.values[i], m.nCols);
+        if (maxAbsInRow>maxAbs)
+            maxAbs=maxAbsInRow;
+    }
+}
+
+void printMatrixFWithMinMaxAbs(matrixF *ms, int nMatrix){
+    float minMaxAbs = maxAbsInMatrix(ms[0]);
+    for (int i = 1; i < nMatrix; i++) {
+        float maxAbs = maxAbsInMatrix(ms[i]);
+        if (maxAbs < minMaxAbs)
+            minMaxAbs = maxAbs;
+    }
+    for (int i = 0; i < nMatrix; i++)
+        if (maxAbsInMatrix(ms[i]) == minMaxAbs)
+            outputMatrixF(ms[i]);
+}

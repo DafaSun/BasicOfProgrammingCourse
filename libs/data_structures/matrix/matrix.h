@@ -170,7 +170,25 @@ int countValues(const int *a, int n, int value);
 //возвращает количество нулевых строк прямоугольной матрицы m.
 int countZeroRows(matrix m);
 
-//выводит матрицы из массиве ms размера nMatrix, имеющие наибольшее число нулевых строк.
+//выводит матрицы из массива ms размера nMatrix, имеющие наибольшее число нулевых строк.
 void printMatrixWithMaxZeroRows(matrix *ms, int nMatrix);
+
+typedef struct matrixF {
+    float **values; // элементы матрицы
+    int nRows; // количество рядов
+    int nCols; // количество столбцов
+} matrixF;
+
+//вывод матрицы m.
+void outputMatrixF(matrixF m);
+
+//возвращает максимум абсолютных величин элементов массива а размера n.
+float maxAbsInArray(float *a, int n);
+
+//возвращает максимум абсолютных величин элементов матрицы m.
+float maxAbsInMatrix(matrixF m);
+
+//выводит матрицы из массива ms размера nMatrix, имеющие наименьший максимум абсолютных величин ее элементов.
+void printMatrixWithMinMaxAbs(matrixF *ms, int nMatrix);
 
 #endif //COURSE_MATRIX_H
