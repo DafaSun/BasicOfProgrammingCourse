@@ -53,9 +53,11 @@ void outputMatrices(matrix *ms, int nMatrices) {
 }
 
 void swapRows(matrix m, int i1, int i2) {
-    int t = *m.values[i1];
-    *m.values[i1] = *m.values[i2];
-    *m.values[i2] = t;
+    for (int j = 0; j < m.nRows; j++) {
+        int t = m.values[i1][j];
+        m.values[i1][j] = m.values[i2][j];
+        m.values[i2][j] = t;
+    }
 }
 
 void swapColumns(matrix m, int j1, int j2) {
