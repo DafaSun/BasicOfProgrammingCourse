@@ -9,12 +9,16 @@
 D:/Dafa/Study/OP/course/libs/data_structures/matrix/matrix.c
 matrix.h
 D:/Dafa/Study/OP/course/libs/data_structures/matrix/matrix.h
-malloc.h
--
 
 D:/Dafa/Study/OP/course/libs/data_structures/matrix/matrix.h
 stdio.h
 -
+stdlib.h
+-
 stdbool.h
+-
+malloc.h
+-
+math.h
 -
 
