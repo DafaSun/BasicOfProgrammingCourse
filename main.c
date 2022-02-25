@@ -336,6 +336,30 @@ void test_getMinInArea() {
     test_getMinInArea_2();
 }
 
+void test_sortByDistances() {
+    matrix m1 = createMatrixFromArray(
+            (int[]) {
+                    6, 8, //10
+                    10, 11, //15
+                    5, 12, //13
+            },
+            3, 2
+    );
+    matrix m2 = createMatrixFromArray(
+            (int[]) {
+                    6, 8,
+                    5, 12,
+                    10, 11,
+            },
+            3, 2
+    );
+
+    assert(areTwoMatricesEqual(m1, m2) == 1);
+
+    freeMemMatrix(m1);
+    freeMemMatrix(m2);
+}
+
 void test_countEqClassesByRowsSum_1() {
     matrix m = createMatrixFromArray(
             (int[]) {
@@ -441,6 +465,7 @@ void testOfTheTasks() {
     test_isMutuallyInverseMatrices();
     test_findSumOfMaxesOfPseudoDiagonal();
     test_getMinInArea();
+    test_sortByDistances;
     test_countEqClassesByRowsSum();
     test_getNSpecialElement();
     test_swapPenultimateRow();
