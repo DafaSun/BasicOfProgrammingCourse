@@ -225,7 +225,6 @@ void test_swapRows() {
             2, 3
     );
 
-
     swapRows(m1, 0, 1);
 
     assert(areTwoMatricesEqual(m1, m2) == 1);
@@ -250,8 +249,66 @@ void test_swapColumns() {
             2, 3
     );
 
-
     swapColumns(m1, 0, 1);
+
+    assert(areTwoMatricesEqual(m1, m2) == 1);
+
+    freeMemMatrix(m1);
+    freeMemMatrix(m2);
+}
+
+int sum(int *a, int n) {
+    int s = 0;
+    for (int i = 0; i < n; i++)
+        s += a[i];
+    return s;
+}
+
+void test_insertionSortRowsMatrixByRowCriteria() {
+    matrix m1 = createMatrixFromArray(
+            (int[]) {
+                    2, 2, 2,
+                    9, 3, 3,
+                    1, 0, 0,
+                    5, 6, 7
+            },
+            4, 3
+    );
+    matrix m2 = createMatrixFromArray(
+            (int[]) {
+                    1, 0, 0,
+                    2, 2, 2,
+                    9, 3, 3,
+                    5, 6, 7
+            },
+            4, 3
+    );
+
+    insertionSortRowsMatrixByRowCriteria(m1, sum);
+
+    assert(areTwoMatricesEqual(m1, m2) == 1);
+
+    freeMemMatrix(m1);
+    freeMemMatrix(m2);
+}
+
+void test_insertionSortColsMatrixByColCriteria() {
+    matrix m1 = createMatrixFromArray(
+            (int[]) {
+                    2, 2, 2,
+                    9, 3, 5,
+            },
+            2, 3
+    );
+    matrix m2 = createMatrixFromArray(
+            (int[]) {
+                    2, 2, 2,
+                    3, 5, 9,
+            },
+            2, 3
+    );
+
+    insertionSortColsMatrixByColCriteria(m1, sum);
 
     assert(areTwoMatricesEqual(m1, m2) == 1);
 
@@ -265,6 +322,9 @@ void testOfTheFunction() {
     test_getMemArrayOfMatrices();
     test_swapRows();
     test_swapColumns();
+    test_insertionSortRowsMatrixByRowCriteria();
+//    test_insertionSortColsMatrixByColCriteria();
+
 }
 
 int main() {
