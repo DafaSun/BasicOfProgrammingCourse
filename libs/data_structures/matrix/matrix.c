@@ -443,7 +443,7 @@ position getLeftMin(matrix m) {
     return minPos;
 }
 
-void swapPenultimateRow(matrix m, int n) {
+void swapPenultimateRow(matrix m) {
     int colWithLeftMin[m.nRows];
     position leftMinPos = getLeftMin(m);
     for (int i = 0; i < m.nRows; i++)

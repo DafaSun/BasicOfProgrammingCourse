@@ -405,6 +405,33 @@ void test_getNSpecialElement() {
     freeMemMatrix(m);
 }
 
+void test_swapPenultimateRow() {
+    matrix m1 = createMatrixFromArray(
+            (int[]) {
+                    1, 2, 3,
+                    4, 5, 6,
+                    7, 8, 1,
+            },
+            3, 3
+    );
+    matrix m2 = createMatrixFromArray(
+            (int[]) {
+                    1, 2, 3,
+                    1, 4, 7,
+                    7, 8, 1,
+            },
+            3, 3
+    );
+
+    swapPenultimateRow(m1);
+
+    assert(areTwoMatricesEqual(m1, m2) == 1);
+
+    freeMemMatrix(m1);
+    freeMemMatrix(m2);
+}
+
+
 void testOfTheTasks() {
     test_swapRowsWithMaxAndMinElement();
     test_sortRowsByMaxElement();
@@ -416,6 +443,7 @@ void testOfTheTasks() {
     test_getMinInArea();
     test_countEqClassesByRowsSum();
     test_getNSpecialElement();
+    test_swapPenultimateRow();
 }
 
 void test_getMemMatrix() {

@@ -153,7 +153,7 @@ int getNSpecialElement(matrix m);
 position getLeftMin(matrix m);
 
 //заменяет предпоследнюю строку матрицы m первым из столбцов, в котором находится минимальный элемент матрицы m.
-void swapPenultimateRow(matrix m, int n);
+void swapPenultimateRow(matrix m);
 
 //возвращает значение ’истина’, если массив а размера n отсортирован по неубыванию, ложь – в противном случае.
 bool isNonDescendingSorted(int *a, int n);
