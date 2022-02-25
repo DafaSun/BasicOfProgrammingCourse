@@ -336,6 +336,41 @@ void test_getMinInArea() {
     test_getMinInArea_2();
 }
 
+void test_countEqClassesByRowsSum_1() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    10, 7, 5, 6,
+                    3, 11, 8, 9,
+                    4, 1, 12, 2,
+            },
+            3, 4
+    );
+
+    assert(getMinInArea(m) == 3);
+
+    freeMemMatrix(m);
+}
+
+void test_countEqClassesByRowsSum_2() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    5, 8, 5, 8,
+                    7, 12, 1, 6,
+                    10, 11, 5, 13,
+            },
+            3, 4
+    );
+
+    assert(getMinInArea(m) == 2);
+
+    freeMemMatrix(m);
+}
+
+void test_countEqClassesByRowsSum() {
+    test_countEqClassesByRowsSum_1();
+    test_countEqClassesByRowsSum_2();
+}
+
 void testOfTheTasks() {
     test_swapRowsWithMaxAndMinElement();
     test_sortRowsByMaxElement();
@@ -345,6 +380,7 @@ void testOfTheTasks() {
     test_isMutuallyInverseMatrices();
     test_findSumOfMaxesOfPseudoDiagonal();
     test_getMinInArea();
+    test_countEqClassesByRowsSum();
 }
 
 void test_getMemMatrix() {
