@@ -301,6 +301,41 @@ void test_findSumOfMaxesOfPseudoDiagonal() {
     freeMemMatrix(m);
 }
 
+void test_getMinInArea_1() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    10, 7, 5, 6,
+                    3, 11, 8, 9,
+                    4, 1, 12, 2,
+            },
+            3, 4
+    );
+
+    assert(getMinInArea(m) == 5);
+
+    freeMemMatrix(m);
+}
+
+void test_getMinInArea_2() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    6, 8, 9, 2,
+                    7, 12, 3, 4,
+                    10, 11, 5, 1,
+            },
+            3, 4
+    );
+
+    assert(getMinInArea(m) == 6);
+
+    freeMemMatrix(m);
+}
+
+void test_getMinInArea() {
+    test_getMinInArea_1();
+    test_getMinInArea_2();
+}
+
 void testOfTheTasks() {
     test_swapRowsWithMaxAndMinElement();
     test_sortRowsByMaxElement();
@@ -309,7 +344,7 @@ void testOfTheTasks() {
     test_transposeIfMatrixHasNotEqualSumOfRows();
     test_isMutuallyInverseMatrices();
     test_findSumOfMaxesOfPseudoDiagonal();
-
+    test_getMinInArea();
 }
 
 void test_getMemMatrix() {
