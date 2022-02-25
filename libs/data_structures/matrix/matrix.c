@@ -84,23 +84,45 @@ void insertionSortRowsMatrixByRowCriteria(matrix m, int (*criteria)(int *, int))
     }
 }
 
-void insertionSortColsMatrixByColCriteria(matrix m, int (*criteria)(int *, int)) {
-    int resultOfCriteria[m.nCols];
+//void insertionSortColsMatrixByColCriteria(matrix m, int (*criteria)(int *, int)) {
+//    int resultOfCriteria[m.nCols];
+//    for (int i = 0; i < m.nCols; i++) {
+//        int a[m.nRows];
+//        for (int j = 0; j < m.nRows; j++)
+//            a[j] = m.values[j][i];
+//        resultOfCriteria[i] = criteria(a, m.nRows);
+//    }
+//    for (int i = 1; i < m.nRows; i++) {
+//        int t = resultOfCriteria[i];
+//        int j = i;
+//        while (j > 0 && resultOfCriteria[j - 1] > t) {
+//            resultOfCriteria[j] = resultOfCriteria[j - 1];
+//            swapColumns(m, j, j - 1);
+//            j--;
+//        }
+//        resultOfCriteria[j] = t;
+//    }
+//}
+
+void selectionSortColsMatrixByColCriteria(matrix m, int (*criteria)(int *, int)) {
+    int criteriaValues[m.nCols];
+    int b[m.nRows];
     for (int i = 0; i < m.nCols; i++) {
-        int a[m.nRows];
         for (int j = 0; j < m.nRows; j++)
-            a[j] = m.values[j][i];
-        resultOfCriteria[i] = criteria(a, m.nRows);
+            b[j] = m.values[j][i];
+        criteriaValues[i] = criteria(b, m.nRows);
     }
-    for (int i = 1; i < m.nRows; i++) {
-        int t = resultOfCriteria[i];
-        int j = i;
-        while (j > 0 && resultOfCriteria[j - 1] > t) {
-            resultOfCriteria[j] = resultOfCriteria[j - 1];
-            swapColumns(m, j, j - 1);
-            j--;
+
+    for (int i = 0; i < m.nCols; i++) {
+        int minIndex = i;
+        for (int j = i + 1; j < m.nCols; j++) {
+            if (criteriaValues[j] < criteriaValues[minIndex])
+                minIndex = j;
         }
-        resultOfCriteria[j] = t;
+        if (minIndex != i) {
+            swapColumns(m, minIndex, i);
+            criteriaValues[minIndex] = criteriaValues[i];
+        }
     }
 }
 
@@ -225,7 +247,7 @@ int getMin(int *a, int n) {
 }
 
 void sortColsByMinElement(matrix m) {
-    insertionSortColsMatrixByColCriteria(m, getMin);
+    selectionSortColsMatrixByColCriteria(m, getMin);
 }
 
 void makeZeroMatrix(matrix m) {

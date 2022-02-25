@@ -184,12 +184,70 @@ void test_getSquareOfMatrixIfSymmetric() {
     test_getSquareOfMatrixIfSymmetric_2();
 }
 
+void test_transposeIfMatrixHasNotEqualSumOfRows_1() {
+    matrix m1 = createMatrixFromArray(
+            (int[]) {
+                    9, 11, 7,
+                    11, 2, 11,
+                    11, 3, 13,
+            },
+            3, 3
+    );
+    matrix m2 = createMatrixFromArray(
+            (int[]) {
+                    9, 11, 7,
+                    11, 2, 11,
+                    11, 3, 13,
+            },
+            3, 3
+    );
+
+    sortColsByMinElement(m1);
+
+    assert(areTwoMatricesEqual(m1, m2) == 1);
+
+    freeMemMatrix(m1);
+    freeMemMatrix(m2);
+}
+
+void test_transposeIfMatrixHasNotEqualSumOfRows_2() {
+    matrix m1 = createMatrixFromArray(
+            (int[]) {
+                    9, 11, 5,
+                    11, 2, 11,
+                    1, 16, 4,
+            },
+            3, 3
+    );
+    matrix m2 = createMatrixFromArray(
+            (int[]) {
+                    9, 11, 1,
+                    11, 2, 16,
+                    5, 11, 4,
+            },
+            3, 3
+    );
+
+    sortColsByMinElement(m1);
+
+    assert(areTwoMatricesEqual(m1, m2) == 1);
+
+    freeMemMatrix(m1);
+    freeMemMatrix(m2);
+}
+
+void test_transposeIfMatrixHasNotEqualSumOfRows() {
+    test_transposeIfMatrixHasNotEqualSumOfRows_1();
+    test_transposeIfMatrixHasNotEqualSumOfRows_2();
+}
+
 
 void testOfTheTasks() {
     test_swapRowsWithMaxAndMinElement();
     test_sortRowsByMaxElement();
-//    test_sortColsByMinElement();
-//    test_getSquareOfMatrixIfSymmetric();
+    test_sortColsByMinElement();
+    test_getSquareOfMatrixIfSymmetric();
+    test_transposeIfMatrixHasNotEqualSumOfRows;
 
 }
 
@@ -292,7 +350,7 @@ void test_insertionSortRowsMatrixByRowCriteria() {
     freeMemMatrix(m2);
 }
 
-void test_insertionSortColsMatrixByColCriteria() {
+void test_selectionSortColsMatrixByColCriteria() {
     matrix m1 = createMatrixFromArray(
             (int[]) {
                     2, 2, 2,
@@ -308,7 +366,7 @@ void test_insertionSortColsMatrixByColCriteria() {
             2, 3
     );
 
-    insertionSortColsMatrixByColCriteria(m1, sum);
+    selectionSortColsMatrixByColCriteria(m1, sum);
 
     assert(areTwoMatricesEqual(m1, m2) == 1);
 
@@ -365,7 +423,7 @@ void test_areTwoMatricesEqual_1() {
             2, 3
     );
 
-    insertionSortColsMatrixByColCriteria(m1, sum);
+    selectionSortColsMatrixByColCriteria(m1, sum);
 
     assert(areTwoMatricesEqual(m1, m2) == 1);
 
@@ -388,8 +446,6 @@ void test_areTwoMatricesEqual_2() {
             },
             2, 3
     );
-
-    insertionSortColsMatrixByColCriteria(m1, sum);
 
     assert(areTwoMatricesEqual(m1, m2) == 0);
 
@@ -555,7 +611,7 @@ void testOfTheFunction() {
     test_swapRows();
     test_swapColumns();
     test_insertionSortRowsMatrixByRowCriteria();
-//    test_insertionSortColsMatrixByColCriteria();
+    test_selectionSortColsMatrixByColCriteria();
     test_isSquareMatrix();
     test_areTwoMatricesEqual();
     test_isEMatrix();
