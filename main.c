@@ -209,10 +209,62 @@ void test_getMemArrayOfMatrices() {
     freeMemMatrices(ms, 2);
 }
 
+void test_swapRows() {
+    matrix m1 = createMatrixFromArray(
+            (int[]) {
+                    9, 3, 3,
+                    2, 2, 2,
+            },
+            2, 3
+    );
+    matrix m2 = createMatrixFromArray(
+            (int[]) {
+                    2, 2, 2,
+                    9, 3, 3,
+            },
+            2, 3
+    );
+
+
+    swapRows(m1, 0, 1);
+
+    assert(areTwoMatricesEqual(m1, m2) == 1);
+
+    freeMemMatrix(m1);
+    freeMemMatrix(m2);
+}
+
+void test_swapColumns() {
+    matrix m1 = createMatrixFromArray(
+            (int[]) {
+                    2, 2, 2,
+                    9, 3, 3,
+            },
+            2, 3
+    );
+    matrix m2 = createMatrixFromArray(
+            (int[]) {
+                    2, 2, 2,
+                    3, 9, 3,
+            },
+            2, 3
+    );
+
+
+    swapColumns(m1, 0, 1);
+
+    assert(areTwoMatricesEqual(m1, m2) == 1);
+
+    freeMemMatrix(m1);
+    freeMemMatrix(m2);
+}
+
 
 void testOfTheFunction() {
     test_getMemMatrix();
     test_getMemArrayOfMatrices();
+    test_swapRows();
+    test_swapColumns();
 }
 
 int main() {
