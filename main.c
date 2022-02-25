@@ -505,12 +505,48 @@ void test_transposeSquareMatrix() {
             3, 3
     );
 
-   transposeSquareMatrix(m1);
+    transposeSquareMatrix(m1);
 
     assert(areTwoMatricesEqual(m1, m2) == 1);
 
     freeMemMatrix(m1);
     freeMemMatrix(m2);
+}
+
+void test_getMaxValuePos() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    1, 4, 5,
+                    4, 1, 0,
+                    9, 0, 1,
+            },
+            3, 3
+    );
+
+    position p = getMaxValuePos(m);
+
+    assert(p.rowIndex == 2);
+    assert(p.colIndex == 0);
+
+    freeMemMatrix(m);
+}
+
+void test_getMinValuePos() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    1, 4, 5,
+                    4, 1, 8,
+                    5, 0, 1,
+            },
+            3, 3
+    );
+
+    position p = getMinValuePos(m);
+
+    assert(p.rowIndex == 2);
+    assert(p.colIndex == 1);
+
+    freeMemMatrix(m);
 }
 
 void testOfTheFunction() {
@@ -525,6 +561,8 @@ void testOfTheFunction() {
     test_isEMatrix();
     test_isSymmetricMatrix();
     test_transposeSquareMatrix();
+    test_getMaxValuePos();
+    test_getMinValuePos();
 
 }
 
