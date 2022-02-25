@@ -487,6 +487,32 @@ void test_isSymmetricMatrix() {
     test_isSymmetricMatrix_2();
 }
 
+void test_transposeSquareMatrix() {
+    matrix m1 = createMatrixFromArray(
+            (int[]) {
+                    1, 2, 3,
+                    4, 5, 6,
+                    7, 8, 9,
+            },
+            3, 3
+    );
+    matrix m2 = createMatrixFromArray(
+            (int[]) {
+                    1, 4, 7,
+                    2, 5, 8,
+                    3, 6, 9
+            },
+            3, 3
+    );
+
+   transposeSquareMatrix(m1);
+
+    assert(areTwoMatricesEqual(m1, m2) == 1);
+
+    freeMemMatrix(m1);
+    freeMemMatrix(m2);
+}
+
 void testOfTheFunction() {
     test_getMemMatrix();
     test_getMemArrayOfMatrices();
@@ -498,6 +524,7 @@ void testOfTheFunction() {
     test_areTwoMatricesEqual();
     test_isEMatrix();
     test_isSymmetricMatrix();
+    test_transposeSquareMatrix();
 
 }
 
