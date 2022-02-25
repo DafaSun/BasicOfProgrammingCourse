@@ -316,6 +316,176 @@ void test_insertionSortColsMatrixByColCriteria() {
     freeMemMatrix(m2);
 }
 
+void test_isSquareMatrix_1() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    2, 2, 2,
+                    3, 5, 9,
+            },
+            2, 3
+    );
+
+    assert(isSquareMatrix(m) == false);
+
+    freeMemMatrix(m);
+}
+
+void test_isSquareMatrix_2() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    2, 2,
+                    3, 5,
+            },
+            2, 2
+    );
+
+    assert(isSquareMatrix(m) == true);
+
+    freeMemMatrix(m);
+}
+
+void test_isSquareMatrix() {
+    test_isSquareMatrix_1();
+    test_isSquareMatrix_2();
+}
+
+void test_areTwoMatricesEqual_1() {
+    matrix m1 = createMatrixFromArray(
+            (int[]) {
+                    2, 2, 2,
+                    3, 5, 9,
+            },
+            2, 3
+    );
+    matrix m2 = createMatrixFromArray(
+            (int[]) {
+                    2, 2, 2,
+                    3, 5, 9,
+            },
+            2, 3
+    );
+
+    insertionSortColsMatrixByColCriteria(m1, sum);
+
+    assert(areTwoMatricesEqual(m1, m2) == 1);
+
+    freeMemMatrix(m1);
+    freeMemMatrix(m2);
+}
+
+void test_areTwoMatricesEqual_2() {
+    matrix m1 = createMatrixFromArray(
+            (int[]) {
+                    2, 2, 2,
+                    9, 3, 5,
+            },
+            2, 3
+    );
+    matrix m2 = createMatrixFromArray(
+            (int[]) {
+                    2, 2, 2,
+                    3, 5, 9,
+            },
+            2, 3
+    );
+
+    insertionSortColsMatrixByColCriteria(m1, sum);
+
+    assert(areTwoMatricesEqual(m1, m2) == 0);
+
+    freeMemMatrix(m1);
+    freeMemMatrix(m2);
+}
+
+void test_areTwoMatricesEqual() {
+    test_areTwoMatricesEqual_1();
+    test_areTwoMatricesEqual_2();
+}
+
+void test_isEMatrix_1() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    2, 2, 2,
+                    3, 5, 9,
+            },
+            2, 3
+    );
+
+    assert(isEMatrix(m) == 0);
+
+    freeMemMatrix(m);
+}
+
+void test_isEMatrix_2() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    1, 0, 0,
+                    0, 1, 0,
+                    0, 0, 1,
+            },
+            3, 3
+    );
+
+    assert(isEMatrix(m) == 1);
+
+    freeMemMatrix(m);
+}
+
+void test_isEMatrix_3() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    1, 0, 5,
+                    4, 1, 0,
+                    0, 0, 1,
+            },
+            3, 3
+    );
+
+    assert(isEMatrix(m) == 0);
+
+    freeMemMatrix(m);
+}
+
+void test_isEMatrix() {
+    test_isEMatrix_1();
+    test_isEMatrix_2();
+    test_isEMatrix_3();
+}
+
+void test_isSymmetricMatrix_1() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    1, 0, 5,
+                    4, 1, 0,
+                    0, 0, 1,
+            },
+            3, 3
+    );
+
+    assert(isSymmetricMatrix(m) == 0);
+
+    freeMemMatrix(m);
+}
+
+void test_isSymmetricMatrix_2() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    1, 4, 5,
+                    4, 1, 0,
+                    5, 0, 1,
+            },
+            3, 3
+    );
+
+    assert(isSymmetricMatrix(m) == 1);
+
+    freeMemMatrix(m);
+}
+
+void test_isSymmetricMatrix() {
+    test_isSymmetricMatrix_1();
+    test_isSymmetricMatrix_2();
+}
 
 void testOfTheFunction() {
     test_getMemMatrix();
@@ -324,6 +494,10 @@ void testOfTheFunction() {
     test_swapColumns();
     test_insertionSortRowsMatrixByRowCriteria();
 //    test_insertionSortColsMatrixByColCriteria();
+    test_isSquareMatrix();
+    test_areTwoMatricesEqual();
+    test_isEMatrix();
+    test_isSymmetricMatrix();
 
 }
 
