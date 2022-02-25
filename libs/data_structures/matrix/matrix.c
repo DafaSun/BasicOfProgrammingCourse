@@ -53,7 +53,7 @@ void outputMatrices(matrix *ms, int nMatrices) {
 }
 
 void swapRows(matrix m, int i1, int i2) {
-    for (int j = 0; j < m.nRows; j++) {
+    for (int j = 0; j < m.nCols; j++) {
         int t = m.values[i1][j];
         m.values[i1][j] = m.values[i2][j];
         m.values[i2][j] = t;
@@ -90,14 +90,14 @@ void insertionSortColsMatrixByColCriteria(matrix m, int (*criteria)(int *, int))
         int a[m.nRows];
         for (int j = 0; j < m.nRows; j++)
             a[j] = m.values[j][i];
-        resultOfCriteria[i] = criteria(&a[i], m.nRows);
+        resultOfCriteria[i] = criteria(a, m.nRows);
     }
     for (int i = 1; i < m.nRows; i++) {
         int t = resultOfCriteria[i];
         int j = i;
         while (j > 0 && resultOfCriteria[j - 1] > t) {
             resultOfCriteria[j] = resultOfCriteria[j - 1];
-            swapRows(m, j, j - 1);
+            swapColumns(m, j, j - 1);
             j--;
         }
         resultOfCriteria[j] = t;
