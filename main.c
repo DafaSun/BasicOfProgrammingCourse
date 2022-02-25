@@ -145,8 +145,6 @@ void test_getSquareOfMatrixIfSymmetric_1() {
             3, 3
     );
 
-    sortColsByMinElement(m1);
-
     assert(areTwoMatricesEqual(m1, m2) == 1);
 
     freeMemMatrix(m1);
@@ -170,8 +168,6 @@ void test_getSquareOfMatrixIfSymmetric_2() {
             },
             3, 3
     );
-
-    sortColsByMinElement(m1);
 
     assert(areTwoMatricesEqual(m1, m2) == 1);
 
@@ -201,8 +197,6 @@ void test_transposeIfMatrixHasNotEqualSumOfRows_1() {
             },
             3, 3
     );
-
-    sortColsByMinElement(m1);
 
     assert(areTwoMatricesEqual(m1, m2) == 1);
 
@@ -281,8 +275,6 @@ void test_isMutuallyInverseMatrices_2() {
             3, 3
     );
 
-    sortColsByMinElement(m1);
-
     assert(areTwoMatricesEqual(m1, m2) == 1);
 
     freeMemMatrix(m1);
@@ -294,6 +286,20 @@ void test_isMutuallyInverseMatrices() {
     test_isMutuallyInverseMatrices_2();
 }
 
+void test_findSumOfMaxesOfPseudoDiagonal() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    3, 2, 5, 4,
+                    1, 3, 6, 3,
+                    3, 2, 1, 2,
+            },
+            3, 4
+    );
+
+    assert(findSumOfMaxesOfPseudoDiagonal(m) == 20);
+
+    freeMemMatrix(m);
+}
 
 void testOfTheTasks() {
     test_swapRowsWithMaxAndMinElement();
@@ -302,6 +308,7 @@ void testOfTheTasks() {
     test_getSquareOfMatrixIfSymmetric();
     test_transposeIfMatrixHasNotEqualSumOfRows();
     test_isMutuallyInverseMatrices();
+    test_findSumOfMaxesOfPseudoDiagonal();
 
 }
 
