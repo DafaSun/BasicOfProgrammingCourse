@@ -448,35 +448,62 @@ void test_swapPenultimateRow() {
     freeMemMatrix(m2);
 }
 
+void test_countNonDescendingRowsMatrices_1() {
+    matrix *ms = createArrayOfMatrixFromArray((int[]) {
+            1, 2, 3,
+            4, 5, 6,
+            7, 5, 8,
+            4, 6, 1,
+            9, 5, 2,
+            4, 6, 8,
+
+    }, 3, 2, 3);
+
+    assert(countNonDescendingRowsMatrices(ms, 3) == 1);
+
+    freeMemMatrices(ms, 3);
+}
+
+void test_countNonDescendingRowsMatrices_2() {
+    matrix *ms = createArrayOfMatrixFromArray((int[]) {
+            7, 1,
+            1, 1,
+            1, 6,
+            2, 2,
+            5, 4,
+            2, 3,
+            1, 3,
+            7, 9,
+
+    }, 4, 2, 2);
+
+    assert(countNonDescendingRowsMatrices(ms, 4) == 2);
+
+    freeMemMatrices(ms, 4);
+}
+
 void test_countNonDescendingRowsMatrices() {
-    matrix m1 = createMatrixFromArray(
-            (int[]) {
-                    1, 2, 3,
-                    4, 5, 6,
-                    7, 8, 1,
-            },
-            3, 3
-    );
-    matrix m2 = createMatrixFromArray(
-            (int[]) {
-                    1, 2, 3,
-                    1, 4, 7,
-                    7, 8, 1,
-            },
-            3, 3
-    );
-
-    swapPenultimateRow(m1);
-
-    assert(areTwoMatricesEqual(m1, m2) == 1);
-
-    freeMemMatrix(m1);
-    freeMemMatrix(m2);
+    test_countNonDescendingRowsMatrices_1;
+    test_countNonDescendingRowsMatrices_2;
 }
 
 void test_countZeroRows() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    1, 1, 0,
+                    0, 0, 0,
+                    0, 0, 1,
+                    0, 0, 0,
+                    0, 1, 1,
+            },
+            5, 3
+    );
 
+    assert (countZeroRows(m) == 2);
+
+    freeMemMatrix(m);
 }
+
 
 void testOfTheTasks() {
     test_swapRowsWithMaxAndMinElement();
@@ -491,7 +518,7 @@ void testOfTheTasks() {
     test_countEqClassesByRowsSum();
     test_getNSpecialElement();
     test_swapPenultimateRow();
-    test_countNonDescendingRowsMatrices;
+    test_countNonDescendingRowsMatrices();
     test_countZeroRows();
 }
 
@@ -863,7 +890,6 @@ void testOfTheFunction() {
     test_transposeSquareMatrix();
     test_getMaxValuePos();
     test_getMinValuePos();
-
 }
 
 int main() {
@@ -872,7 +898,3 @@ int main() {
 
     return 0;
 }
-
-
-
-
