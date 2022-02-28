@@ -145,6 +145,8 @@ void test_getSquareOfMatrixIfSymmetric_1() {
             3, 3
     );
 
+    getSquareOfMatrixIfSymmetric(&m1);
+
     assert(areTwoMatricesEqual(m1, m2) == 1);
 
     freeMemMatrix(m1);
@@ -154,20 +156,22 @@ void test_getSquareOfMatrixIfSymmetric_1() {
 void test_getSquareOfMatrixIfSymmetric_2() {
     matrix m1 = createMatrixFromArray(
             (int[]) {
-                    9, 11, 1,
-                    11, 2, 11,
-                    1, 11, 4,
+                    1, 2, 3,
+                    2, 5, 6,
+                    3, 6, 7,
             },
             3, 3
     );
     matrix m2 = createMatrixFromArray(
             (int[]) {
-                    203, 132, 134,
-                    132, 246, 77,
-                    134, 77, 138,
+                    14, 30, 36,
+                    30, 65, 78,
+                    36, 78, 94,
             },
             3, 3
     );
+
+    getSquareOfMatrixIfSymmetric(&m1);
 
     assert(areTwoMatricesEqual(m1, m2) == 1);
 
@@ -198,6 +202,8 @@ void test_transposeIfMatrixHasNotEqualSumOfRows_1() {
             3, 3
     );
 
+    transposeIfMatrixHasNotEqualSumOfRows(m1);
+
     assert(areTwoMatricesEqual(m1, m2) == 1);
 
     freeMemMatrix(m1);
@@ -221,6 +227,8 @@ void test_transposeIfMatrixHasNotEqualSumOfRows_2() {
             },
             3, 3
     );
+
+    transposeIfMatrixHasNotEqualSumOfRows(m1);
 
     assert(isMutuallyInverseMatrices(m1, m2) == 0);
 
@@ -275,7 +283,7 @@ void test_isMutuallyInverseMatrices_2() {
             3, 3
     );
 
-    assert(areTwoMatricesEqual(m1, m2) == 1);
+    assert(areTwoMatricesEqual(m1, m2) == 0);
 
     freeMemMatrix(m1);
     freeMemMatrix(m2);
@@ -295,6 +303,8 @@ void test_findSumOfMaxesOfPseudoDiagonal() {
             },
             3, 4
     );
+
+    findSumOfMaxesOfPseudoDiagonal(m);
 
     assert(findSumOfMaxesOfPseudoDiagonal(m) == 20);
 
@@ -354,6 +364,8 @@ void test_sortByDistances() {
             3, 2
     );
 
+    sortByDistances(m1);
+
     assert(areTwoMatricesEqual(m1, m2) == 1);
 
     freeMemMatrix(m1);
@@ -370,7 +382,7 @@ void test_countEqClassesByRowsSum_1() {
             3, 4
     );
 
-    assert(getMinInArea(m) == 3);
+    assert(countEqClassesByRowsSum(m) == 3);
 
     freeMemMatrix(m);
 }
@@ -379,31 +391,13 @@ void test_countEqClassesByRowsSum_2() {
     matrix m = createMatrixFromArray(
             (int[]) {
                     5, 8, 5, 8,
-                    7, 12, 1, 6,
                     10, 11, 5, 13,
+                    7, 12, 1, 6,
             },
             3, 4
     );
 
-    assert(getMinInArea(m) == 2);
-
-    freeMemMatrix(m);
-}
-
-void test_countEqClassesByRowsSum_3() {
-    matrix m = createMatrixFromArray(
-            (int[]) {
-                    7, 1,
-                    2, 7,
-                    5, 4,
-                    1, 6,
-                    4, 3,
-                    8, 0,
-            },
-            6, 2
-    );
-
-    assert(getMinInArea(m) == 3);
+    assert(countEqClassesByRowsSum(m) == 2);
 
     freeMemMatrix(m);
 }
@@ -411,7 +405,6 @@ void test_countEqClassesByRowsSum_3() {
 void test_countEqClassesByRowsSum() {
     test_countEqClassesByRowsSum_1();
     test_countEqClassesByRowsSum_2();
-    test_countEqClassesByRowsSum_3();
 }
 
 void test_getNSpecialElement() {
@@ -424,7 +417,7 @@ void test_getNSpecialElement() {
             3, 4
     );
 
-    assert(getMinInArea(m) == 2);
+    assert(getNSpecialElement(m) == 2);
 
     freeMemMatrix(m);
 }
@@ -455,6 +448,35 @@ void test_swapPenultimateRow() {
     freeMemMatrix(m2);
 }
 
+void test_countNonDescendingRowsMatrices() {
+    matrix m1 = createMatrixFromArray(
+            (int[]) {
+                    1, 2, 3,
+                    4, 5, 6,
+                    7, 8, 1,
+            },
+            3, 3
+    );
+    matrix m2 = createMatrixFromArray(
+            (int[]) {
+                    1, 2, 3,
+                    1, 4, 7,
+                    7, 8, 1,
+            },
+            3, 3
+    );
+
+    swapPenultimateRow(m1);
+
+    assert(areTwoMatricesEqual(m1, m2) == 1);
+
+    freeMemMatrix(m1);
+    freeMemMatrix(m2);
+}
+
+void test_countZeroRows() {
+
+}
 
 void testOfTheTasks() {
     test_swapRowsWithMaxAndMinElement();
@@ -465,10 +487,12 @@ void testOfTheTasks() {
     test_isMutuallyInverseMatrices();
     test_findSumOfMaxesOfPseudoDiagonal();
     test_getMinInArea();
-    test_sortByDistances;
+    test_sortByDistances();
     test_countEqClassesByRowsSum();
     test_getNSpecialElement();
     test_swapPenultimateRow();
+    test_countNonDescendingRowsMatrices;
+    test_countZeroRows();
 }
 
 void test_getMemMatrix() {
@@ -844,6 +868,7 @@ void testOfTheFunction() {
 
 int main() {
     testOfTheFunction();
+    testOfTheTasks();
 
     return 0;
 }

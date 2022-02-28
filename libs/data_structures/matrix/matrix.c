@@ -193,11 +193,13 @@ position getMaxValuePos(matrix m) {
     int rowIndexOfMaxValue = 0;
     int colIndexOfMaxValue = 0;
     for (int i = 0; i < m.nRows; i++)
-        for (int j = 0; j < m.nCols; j++)
+        for (int j = 0; j < m.nCols; j++){
             if (m.values[i][j] > m.values[rowIndexOfMaxValue][colIndexOfMaxValue]) {
                 rowIndexOfMaxValue = i;
                 colIndexOfMaxValue = j;
             }
+        }
+
     return (position) {rowIndexOfMaxValue, colIndexOfMaxValue};
 }
 
@@ -250,10 +252,10 @@ void sortColsByMinElement(matrix m) {
     selectionSortColsMatrixByColCriteria(m, getMin);
 }
 
-void makeZeroMatrix(matrix m) {
-    for (int i = 0; i < m.nRows; i++)
-        for (int j = 0; j < m.nCols; j++)
-            m.values[i][j] = 0;
+void makeZeroMatrix(matrix *m) {
+    for (int i = 0; i < m->nRows; i++)
+        for (int j = 0; j < m->nCols; j++)
+            m->values[i][j] = 0;
 }
 
 matrix mulMatrices(matrix m1, matrix m2) {
@@ -262,7 +264,7 @@ matrix mulMatrices(matrix m1, matrix m2) {
         exit(1);
     }
     matrix m = getMemMatrix(m1.nRows, m2.nCols);
-    makeZeroMatrix(m);
+    makeZeroMatrix(&m);
     int n = m1.nCols;
     for (int i = 0; i < m1.nRows; i++)
         for (int j = 0; j < m2.nCols; j++)
@@ -282,13 +284,13 @@ int comp(const void *a, const void *b) {
     if (p1 == p2)
         return 0;
     else if (p1 < p2)
-        return -1;
-    else
         return 1;
+    else
+        return -1;
 }
 
 bool isUnique(long long *a, int n) {
-    qsort(&a, n, sizeof(int), comp);
+    qsort(a, n, sizeof(int), comp);
     for (int i = 0; i < n - 1; i++)
         if (a[i] == a[i + 1])
             return false;
@@ -325,11 +327,11 @@ long long findSumOfMaxesOfPseudoDiagonal(matrix m) {
     int n = min(m.nRows, m.nCols);
     int elementsOfPseudoDiagonal[n];
     long long sum = 0;
-    for (int i = 1; i < m.nRows; i++) {
+    for (int i = 1; i < m.nCols; i++) {
         int j = 0;
         int k = i;
         int ii = 0;
-        while ((ii < n - k) && (j < m.nRows) && (k < m.nCols)) {
+        while ((j < m.nRows) && (k < m.nCols)) {
             elementsOfPseudoDiagonal[ii] = m.values[j][k];
             ii++;
             j++;
@@ -337,15 +339,28 @@ long long findSumOfMaxesOfPseudoDiagonal(matrix m) {
         }
         sum += getMax(elementsOfPseudoDiagonal, ii);
     }
+    for (int i = 1; i < m.nRows; i++) {
+        int j = i;
+        int k = 0;
+        int ii = 0;
+        while ((j < m.nRows) && (k < m.nCols)) {
+            elementsOfPseudoDiagonal[ii] = m.values[j][k];
+            ii++;
+            j++;
+            k++;
+        }
+        sum += getMax(elementsOfPseudoDiagonal, ii);
+
+    }
     return sum;
 }
 
 int getMinInArea(matrix m) {
     position maxValuePos = getMaxValuePos(m);
-    int min = *m.values[maxValuePos.rowIndex, maxValuePos.colIndex];
-    int leftBorder = maxValuePos.colIndex;
-    int rightBorder = maxValuePos.colIndex;
-    for (int i = maxValuePos.rowIndex; i >= 0; i--) {
+    int min =m.values[maxValuePos.rowIndex] [maxValuePos.colIndex];
+    int leftBorder = maxValuePos.colIndex-1;
+    int rightBorder = maxValuePos.colIndex-1;
+    for (int i = maxValuePos.rowIndex-1; i >= 0; i--) {
         int j = leftBorder;
         while (j <= rightBorder) {
             int p = m.values[i][j];
@@ -388,19 +403,19 @@ void sortByDistances(matrix m) {
     insertionSortRowsMatrixByRowCriteriaF(m, getDistance);
 }
 
-int cmp_long_long(const void *pa, const void *pb) {
-    int *a = (int *) pa;
-    int *b = (int *) pb;
-    if (a == b)
+int cmp(const void *a, const void *b) {
+    int *p1 = (int *) a;
+    int *p2 = (int *) b;
+    if (p1 == p2)
         return 0;
-    else if (a < b)
-        return -1;
-    else
+    else if (p1 < p2)
         return 1;
+    else
+        return -1;
 }
 
 int countNUnique(long long *a, int n) {
-    qsort(&a, n, sizeof(int), cmp_long_long);
+    qsort(a, n, sizeof(int), cmp);
     long long e = a[0];
     int count = 1;
     for (int i = 1; i < n; i++)
@@ -415,7 +430,8 @@ int countEqClassesByRowsSum(matrix m) {
     long long sumOfElementOfRow[m.nRows];
     for (int i = 0; i < m.nRows; i++)
         sumOfElementOfRow[i] = getSum(m.values[i], m.nCols);
-    return countNUnique(sumOfElementOfRow, m.nRows);
+    int c=countNUnique(sumOfElementOfRow, m.nRows);
+    return c;
 }
 
 int getNSpecialElement(matrix m) {
@@ -423,7 +439,7 @@ int getNSpecialElement(matrix m) {
     int count = 0;
     for (int i = 0; i < m.nCols; i++) {
         for (int j = 0; j < m.nRows; j++)
-            elementsOfCol[j] = m.values[i][j];
+            elementsOfCol[j] = m.values[j][i];
         int max = getMax(elementsOfCol, m.nRows);
         if (getSum(elementsOfCol, m.nRows) - max < max)
             count++;

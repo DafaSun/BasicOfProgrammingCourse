@@ -105,7 +105,7 @@ void sortColsByMinElement(matrix m);
 matrix mulMatrices(matrix m1, matrix m2);
 
 //обращает все элементы матрицы m в ноль.
-void makeZeroMatrix(matrix m);
+void makeZeroMatrix(matrix *m);
 
 //если данная квадратная матрица m симметрична, то заменить m ее квадратом.
 void getSquareOfMatrixIfSymmetric(matrix *m);
