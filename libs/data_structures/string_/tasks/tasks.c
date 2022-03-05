@@ -16,13 +16,47 @@ void removeNonLetters(char *s) {
     *destination = '\0';
 }
 
-void test_removeNonLetters(){
+void test_removeNonLetters_1() {
     char s1[] = "He  ll  o";
     char s2[] = "Hello";
 
     removeNonLetters(s1);
 
-    ASSERT_STRING(s2, s1);
+    ASSERT_STRING(s1, s2);
+}
+
+void test_removeNonLetters_2() {
+    char s1[] = "";
+    char s2[] = "";
+
+    removeNonLetters(s1);
+
+    ASSERT_STRING(s1, s2);
+}
+
+void test_removeNonLetters_3() {
+    char s1[] = "Hello";
+    char s2[] = "Hello";
+
+    removeNonLetters(s1);
+
+    ASSERT_STRING(s1, s2);
+}
+
+void test_removeNonLetters_4() {
+    char s1[] = "  \t \n ";
+    char s2[] = "";
+
+    removeNonLetters(s1);
+
+    ASSERT_STRING(s1, s2);
+}
+
+void test_removeNonLetters() {
+    test_removeNonLetters_1();
+    test_removeNonLetters_2();
+    test_removeNonLetters_3();
+    test_removeNonLetters_4();
 }
 
 void removeExtraSpaces(char *s) {
@@ -44,18 +78,33 @@ void removeExtraSpaces(char *s) {
     *iWrite = '\0';
 }
 
-void test_removeExtraSpaces() {
+void test_removeExtraSpaces_1() {
     char s1[] = "Hel    lo  World";
     char s2[] = "Hel lo World";
 
     removeExtraSpaces(s1);
 
-    ASSERT_STRING(s2, s1);
+    ASSERT_STRING(s1, s2);
+}
+
+void test_removeExtraSpaces_2() {
+    char s1[] = " \t  ";
+    char s2[] = " ";
+
+    removeExtraSpaces(s1);
+
+    ASSERT_STRING(s1, s2);
+}
+
+void test_removeExtraSpaces() {
+    test_removeExtraSpaces_1();
+    test_removeExtraSpaces_2();
 }
 
 
 
-void test_tasks(){
+
+void test_tasks() {
     test_removeExtraSpaces();
     test_removeNonLetters();
 }

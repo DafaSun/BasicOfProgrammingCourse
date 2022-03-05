@@ -10,11 +10,11 @@
 #include "../string_.h"
 #include "assert_string.h"
 
-//удаляет из строки s все пробельные символы.
-void removeNonLetters ( char * s );
-
 //возвращает указатель на конец строки s - ноль-символ.
 char * getEndOfString ( char * s );
+
+//удаляет из строки s все пробельные символы.
+void removeNonLetters ( char * s );
 
 //сокращает количество пробелов между словами данного предложения s до одного.
 void removeExtraSpaces(char *s);

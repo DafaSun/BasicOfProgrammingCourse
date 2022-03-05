@@ -4,7 +4,7 @@
 
 #include "assert_string.h"
 
-void assertString(const char *expected, char *got,
+void assertString(char *got, const char *expected,
                   char const *fileName, char const *funcName,
                   int line) {
     if (strcmp_(expected, got)) {

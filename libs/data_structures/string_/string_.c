@@ -205,7 +205,7 @@ void test_copy() {
 
 char *copyIf(char *beginSource, const char *endSource, char *beginDestination, int (*f)(int)) {
     while (beginSource != endSource) {
-        if (f(*beginSource) == 1) {
+        if (f(*beginSource) != 0) {
             *beginDestination = *beginSource;
             beginDestination++;
         }

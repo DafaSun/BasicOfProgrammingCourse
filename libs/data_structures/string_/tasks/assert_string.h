@@ -7,9 +7,9 @@
 
 #include <ctype.h>
 #include "../string_.h"
-#define ASSERT_STRING(expected, got) assertString ( expected , got , __FILE__ , __FUNCTION__ , __LINE__ )
+#define ASSERT_STRING(got, expected) assertString ( got , expected ,  __FILE__ , __FUNCTION__ , __LINE__ )
 
-void assertString(const char *expected, char *got,
+void assertString(char *got, const char *expected,
                   char const *fileName, char const *funcName,
                   int line);
 
