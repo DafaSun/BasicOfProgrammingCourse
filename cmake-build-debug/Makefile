@@ -154,6 +154,30 @@ algorithms/fast:
 	$(MAKE) $(MAKESILENT) -f libs\algorithms\CMakeFiles\algorithms.dir\build.make libs/algorithms/CMakeFiles/algorithms.dir/build
 .PHONY : algorithms/fast
 
+libs/data_structures/string_/string_.obj: libs/data_structures/string_/string_.c.obj
+.PHONY : libs/data_structures/string_/string_.obj
+
+# target to build an object file
+libs/data_structures/string_/string_.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\course.dir\build.make CMakeFiles/course.dir/libs/data_structures/string_/string_.c.obj
+.PHONY : libs/data_structures/string_/string_.c.obj
+
+libs/data_structures/string_/string_.i: libs/data_structures/string_/string_.c.i
+.PHONY : libs/data_structures/string_/string_.i
+
+# target to preprocess a source file
+libs/data_structures/string_/string_.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\course.dir\build.make CMakeFiles/course.dir/libs/data_structures/string_/string_.c.i
+.PHONY : libs/data_structures/string_/string_.c.i
+
+libs/data_structures/string_/string_.s: libs/data_structures/string_/string_.c.s
+.PHONY : libs/data_structures/string_/string_.s
+
+# target to generate assembly for a file
+libs/data_structures/string_/string_.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\course.dir\build.make CMakeFiles/course.dir/libs/data_structures/string_/string_.c.s
+.PHONY : libs/data_structures/string_/string_.c.s
+
 main.obj: main.c.obj
 .PHONY : main.obj
 
@@ -189,6 +213,9 @@ help:
 	@echo ... algorithms
 	@echo ... course
 	@echo ... data_structures
+	@echo ... libs/data_structures/string_/string_.obj
+	@echo ... libs/data_structures/string_/string_.i
+	@echo ... libs/data_structures/string_/string_.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

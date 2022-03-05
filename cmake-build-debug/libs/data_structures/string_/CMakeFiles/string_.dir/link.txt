@@ -1,0 +1,2 @@
+C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\ar.exe qc libstring_.a CMakeFiles/string_.dir/string_.c.obj CMakeFiles/string_.dir/tasks/task_1.c.obj
+C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\ranlib.exe libstring_.a

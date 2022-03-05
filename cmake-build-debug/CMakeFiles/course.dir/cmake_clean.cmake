@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/course.dir/libs/data_structures/string_/string_.c.obj"
   "CMakeFiles/course.dir/main.c.obj"
   "course.exe"
   "course.exe.manifest"

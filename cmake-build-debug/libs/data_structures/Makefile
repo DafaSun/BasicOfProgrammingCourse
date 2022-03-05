@@ -201,6 +201,78 @@ ordered_array_set/ordered_array_set.c.s:
 	cd /d D:\Dafa\Study\OP\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\data_structures\CMakeFiles\data_structures.dir\build.make libs/data_structures/CMakeFiles/data_structures.dir/ordered_array_set/ordered_array_set.c.s
 .PHONY : ordered_array_set/ordered_array_set.c.s
 
+string_/string_.obj: string_/string_.c.obj
+.PHONY : string_/string_.obj
+
+# target to build an object file
+string_/string_.c.obj:
+	cd /d D:\Dafa\Study\OP\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\data_structures\CMakeFiles\data_structures.dir\build.make libs/data_structures/CMakeFiles/data_structures.dir/string_/string_.c.obj
+.PHONY : string_/string_.c.obj
+
+string_/string_.i: string_/string_.c.i
+.PHONY : string_/string_.i
+
+# target to preprocess a source file
+string_/string_.c.i:
+	cd /d D:\Dafa\Study\OP\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\data_structures\CMakeFiles\data_structures.dir\build.make libs/data_structures/CMakeFiles/data_structures.dir/string_/string_.c.i
+.PHONY : string_/string_.c.i
+
+string_/string_.s: string_/string_.c.s
+.PHONY : string_/string_.s
+
+# target to generate assembly for a file
+string_/string_.c.s:
+	cd /d D:\Dafa\Study\OP\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\data_structures\CMakeFiles\data_structures.dir\build.make libs/data_structures/CMakeFiles/data_structures.dir/string_/string_.c.s
+.PHONY : string_/string_.c.s
+
+string_/tasks/assert_string.obj: string_/tasks/assert_string.c.obj
+.PHONY : string_/tasks/assert_string.obj
+
+# target to build an object file
+string_/tasks/assert_string.c.obj:
+	cd /d D:\Dafa\Study\OP\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\data_structures\CMakeFiles\data_structures.dir\build.make libs/data_structures/CMakeFiles/data_structures.dir/string_/tasks/assert_string.c.obj
+.PHONY : string_/tasks/assert_string.c.obj
+
+string_/tasks/assert_string.i: string_/tasks/assert_string.c.i
+.PHONY : string_/tasks/assert_string.i
+
+# target to preprocess a source file
+string_/tasks/assert_string.c.i:
+	cd /d D:\Dafa\Study\OP\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\data_structures\CMakeFiles\data_structures.dir\build.make libs/data_structures/CMakeFiles/data_structures.dir/string_/tasks/assert_string.c.i
+.PHONY : string_/tasks/assert_string.c.i
+
+string_/tasks/assert_string.s: string_/tasks/assert_string.c.s
+.PHONY : string_/tasks/assert_string.s
+
+# target to generate assembly for a file
+string_/tasks/assert_string.c.s:
+	cd /d D:\Dafa\Study\OP\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\data_structures\CMakeFiles\data_structures.dir\build.make libs/data_structures/CMakeFiles/data_structures.dir/string_/tasks/assert_string.c.s
+.PHONY : string_/tasks/assert_string.c.s
+
+string_/tasks/tasks.obj: string_/tasks/tasks.c.obj
+.PHONY : string_/tasks/tasks.obj
+
+# target to build an object file
+string_/tasks/tasks.c.obj:
+	cd /d D:\Dafa\Study\OP\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\data_structures\CMakeFiles\data_structures.dir\build.make libs/data_structures/CMakeFiles/data_structures.dir/string_/tasks/tasks.c.obj
+.PHONY : string_/tasks/tasks.c.obj
+
+string_/tasks/tasks.i: string_/tasks/tasks.c.i
+.PHONY : string_/tasks/tasks.i
+
+# target to preprocess a source file
+string_/tasks/tasks.c.i:
+	cd /d D:\Dafa\Study\OP\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\data_structures\CMakeFiles\data_structures.dir\build.make libs/data_structures/CMakeFiles/data_structures.dir/string_/tasks/tasks.c.i
+.PHONY : string_/tasks/tasks.c.i
+
+string_/tasks/tasks.s: string_/tasks/tasks.c.s
+.PHONY : string_/tasks/tasks.s
+
+# target to generate assembly for a file
+string_/tasks/tasks.c.s:
+	cd /d D:\Dafa\Study\OP\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\data_structures\CMakeFiles\data_structures.dir\build.make libs/data_structures/CMakeFiles/data_structures.dir/string_/tasks/tasks.c.s
+.PHONY : string_/tasks/tasks.c.s
+
 unordered_array_set/unordered_array_set.obj: unordered_array_set/unordered_array_set.c.obj
 .PHONY : unordered_array_set/unordered_array_set.obj
 
@@ -267,6 +339,15 @@ help:
 	@echo ... ordered_array_set/ordered_array_set.obj
 	@echo ... ordered_array_set/ordered_array_set.i
 	@echo ... ordered_array_set/ordered_array_set.s
+	@echo ... string_/string_.obj
+	@echo ... string_/string_.i
+	@echo ... string_/string_.s
+	@echo ... string_/tasks/assert_string.obj
+	@echo ... string_/tasks/assert_string.i
+	@echo ... string_/tasks/assert_string.s
+	@echo ... string_/tasks/tasks.obj
+	@echo ... string_/tasks/tasks.i
+	@echo ... string_/tasks/tasks.s
 	@echo ... unordered_array_set/unordered_array_set.obj
 	@echo ... unordered_array_set/unordered_array_set.i
 	@echo ... unordered_array_set/unordered_array_set.s

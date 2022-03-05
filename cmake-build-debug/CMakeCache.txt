@@ -224,6 +224,12 @@ course_BINARY_DIR:STATIC=D:/Dafa/Study/OP/course/cmake-build-debug
 //Value Computed by CMake
 course_SOURCE_DIR:STATIC=D:/Dafa/Study/OP/course
 
+//Value Computed by CMake
+project_BINARY_DIR:STATIC=D:/Dafa/Study/OP/course/cmake-build-debug/libs
+
+//Value Computed by CMake
+project_SOURCE_DIR:STATIC=D:/Dafa/Study/OP/course/libs
+
 
 ########################
 # INTERNAL cache entries
