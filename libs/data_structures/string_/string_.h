@@ -5,10 +5,14 @@
 #ifndef MAIN_C_STRING__H
 #define MAIN_C_STRING__H
 
+#define MAX_STRING_SIZE 15
+
 #include <stdio.h>
 #include <assert.h>
 #include <ctype.h>
 #include <memory.h>
+
+char _stringBuffer [MAX_STRING_SIZE + 1];
 
 //возвращает длину строки, первый элемент которой расположен в ячейке по указателю begin.
 size_t strlen_(const char *begin);

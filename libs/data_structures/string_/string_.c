@@ -205,7 +205,7 @@ void test_copy() {
 
 char *copyIf(char *beginSource, const char *endSource, char *beginDestination, int (*f)(int)) {
     while (beginSource != endSource) {
-        if (f(*beginSource) != 0) {
+        if (f(*beginSource)) {
             *beginDestination = *beginSource;
             beginDestination++;
         }
@@ -236,7 +236,7 @@ void test_copyIf() {
 
 char *copyIfReverse(char *rbeginSource, const char *rendSource, char *beginDestination, int (*f)(int)) {
     while (rbeginSource != rendSource) {
-        if (f(*rbeginSource) == 1) {
+        if (f(*rbeginSource))  {
             *beginDestination = *rbeginSource;
             beginDestination++;
         }
