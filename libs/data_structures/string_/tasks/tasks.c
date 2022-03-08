@@ -458,7 +458,7 @@ bool isLexicographicallyOrdered(char *s) {
     lastWord.begin = word.begin;
     lastWord.end = word.end;
     r = getWord(lastWord.end, &word);
-    while (r==1) {
+    while (r == 1) {
         if (areWordsEqual(word, lastWord) < 0)
             return false;
         lastWord.begin = word.begin;
@@ -468,53 +468,76 @@ bool isLexicographicallyOrdered(char *s) {
     return true;
 }
 
-void test_isLexicographicallyOrdered_1(){
+void test_isLexicographicallyOrdered_1() {
     char s[MAX_STRING_SIZE] = "ab abc abd";
 
-    assert(isLexicographicallyOrdered(s)==true);
+    assert(isLexicographicallyOrdered(s) == true);
 
     fprintf(stderr, "test_isLexicographicallyOrdered_1 - OK\n");
 }
 
-void test_isLexicographicallyOrdered_2(){
+void test_isLexicographicallyOrdered_2() {
     char s[MAX_STRING_SIZE] = "";
 
-    assert(isLexicographicallyOrdered(s)==true);
+    assert(isLexicographicallyOrdered(s) == true);
 
     fprintf(stderr, "test_isLexicographicallyOrdered_2 - OK\n");
 }
 
-void test_isLexicographicallyOrdered_3(){
+void test_isLexicographicallyOrdered_3() {
     char s[MAX_STRING_SIZE] = "ab ab ab";
 
-    assert(isLexicographicallyOrdered(s)==true);
+    assert(isLexicographicallyOrdered(s) == true);
 
     fprintf(stderr, "test_isLexicographicallyOrdered_3 - OK\n");
 }
 
-void test_isLexicographicallyOrdered_4(){
+void test_isLexicographicallyOrdered_4() {
     char s[MAX_STRING_SIZE] = "abd ab abc";
 
-    assert(isLexicographicallyOrdered(s)==false);
+    assert(isLexicographicallyOrdered(s) == false);
 
     fprintf(stderr, "test_isLexicographicallyOrdered_4 - OK\n");
 }
 
-void test_isLexicographicallyOrdered_5(){
+void test_isLexicographicallyOrdered_5() {
     char s[MAX_STRING_SIZE] = "klg hie abd";
 
-    assert(isLexicographicallyOrdered(s)==false);
+    assert(isLexicographicallyOrdered(s) == false);
 
     fprintf(stderr, "test_isLexicographicallyOrdered_5 - OK\n");
 }
 
-void test_isLexicographicallyOrdered(){
+void test_isLexicographicallyOrdered() {
     test_isLexicographicallyOrdered_1();
     test_isLexicographicallyOrdered_2();
     test_isLexicographicallyOrdered_3();
     test_isLexicographicallyOrdered_4();
     test_isLexicographicallyOrdered_5();
 }
+
+void getBagOfWords(BagOfWords *bag, char *s) {
+    int r = getWord(s, bag[0].words);
+    int i = 1;
+    while (r != 0) {
+        r = getWord(bag[i - 1].words->end, bag[i].words);
+        i++;
+    }
+    bag->size = i;
+}
+
+void outputWord(WordDescriptor w) {
+    for (int i = 0; i < w.end - w.begin; i++)
+        putchar(*(w.begin + i));
+    printf("\n");
+}
+
+void outputWordsReverse(char *s) {
+    getBagOfWords(&_bag, s);
+    for (int i = 0; i < _bag.size; i++)
+        outputWord(_bag.words[i]);
+}
+
 
 void test_tasks() {
     test_removeExtraSpaces();

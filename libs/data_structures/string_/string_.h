@@ -14,7 +14,19 @@
 #include <ctype.h>
 #include <memory.h>
 
+typedef struct WordDescriptor {
+    char *begin; // позиция начала слова
+    char *end; // позиция первого символа, после последнего символа слова
+} WordDescriptor;
+
+typedef struct BagOfWords {
+    WordDescriptor words[MAX_N_WORDS_IN_STRING];
+    size_t size;
+} BagOfWords;
+
 char _stringBuffer [MAX_STRING_SIZE + 1];
+BagOfWords _bag ;
+BagOfWords _bag2 ;
 
 //возвращает длину строки, первый элемент которой расположен в ячейке по указателю begin.
 size_t strlen_(const char *begin);

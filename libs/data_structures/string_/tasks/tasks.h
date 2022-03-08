@@ -12,11 +12,6 @@
 #include "assert_string.h"
 #include "../string_.h"
 
-typedef struct WordDescriptor {
-    char *begin; // позиция начала слова
-    char *end; // позиция первого символа, после последнего символа слова
-} WordDescriptor;
-
 //возвращает указатель на конец строки s - ноль-символ.
 char *getEndOfString(char *s);
 
@@ -51,10 +46,19 @@ void replaceDigitWithSpace(char *s);
 int areWordsEqual(WordDescriptor w1, WordDescriptor w2);
 
 //заменяет все вхождения слова 𝑤1 на слово 𝑤2 в строке по указателю source.
-void replace ( char * source , char * w1 , char * w2 ) ;
+void replace(char *source, char *w1, char *w2);
 
 //возвращает 1, если слова данной строки упорядочены лексикографически, и 0 - в противном случае.
 bool isLexicographicallyOrdered(char *s);
+
+//получает позиции начала и конца каждого слова строки s и записывает их в массив bag.
+void getBagOfWords(BagOfWords *bag, char *s);
+
+//вывод слова w.
+void outputWord(WordDescriptor w);
+
+//
+
 
 
 void test_tasks();
