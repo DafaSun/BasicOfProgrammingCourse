@@ -312,22 +312,24 @@ void test_replaceDigitWithSpace() {
     test_replaceDigitWithSpace_3();
 }
 
-bool isWordEqual(WordDescriptor w1, WordDescriptor w2) {
-    if (w1.end - w1.begin != w2.end - w2.begin)
-        return false;
+int areWordsEqual(WordDescriptor w1, WordDescriptor w2) {
+    long long sizeOfWord1 = w1.end - w1.begin;
+    long long sizeOfWord2 = w2.end - w2.begin;
+
+    if (sizeOfWord1 != sizeOfWord2)
+        return sizeOfWord1 - sizeOfWord2;
 
     char *word1 = w1.begin;
     char *word2 = w2.begin;
-    long long sizeOfWord = w1.end - w1.begin;
 
-    for (long long i = 0; i < sizeOfWord; i++) {
+    for (long long i = 0; i < sizeOfWord1; i++) {
         if (*word1 != *word2)
-            return false;
+            return *word1 - *word2;
         word1++;
         word2++;
     }
 
-    return true;
+    return 0;
 }
 
 void replace(char *source, char *w1, char *w2) {
@@ -345,7 +347,108 @@ void replace(char *source, char *w1, char *w2) {
         readPtr = _stringBuffer;
         recPtr = source;
     }
+    WordDescriptor word;
+    while (*readPtr == ' ') {
+        *recPtr = ' ';
+        recPtr++;
+        readPtr++;
+    }
+    int r = getWord(readPtr, &word);
+    while (r == 1) {
+        if (areWordsEqual(word, word1) == 0) {
+            recPtr = copy(word2.begin, word2.end, recPtr);
+            readPtr += w1Size;
+        } else {
+            long long wordSize = word.end - word.begin;
+            recPtr = copy(readPtr, readPtr + wordSize, recPtr);
+            readPtr += wordSize;
+        }
+        while (*readPtr == ' ') {
+            *recPtr = ' ';
+            recPtr++;
+            readPtr++;
+        }
+        r = getWord(word.end, &word);
+    }
+    *recPtr = '\0';
+}
 
+void test_replace_1() {
+    char s1[MAX_STRING_SIZE] = "abc rek";
+    char w1[] = "abc";
+    char w2[] = "def";
+    char s2[MAX_STRING_SIZE] = "def rek";
+
+    replace(s1, w1, w2);
+
+    ASSERT_STRING(s1, s2);
+}
+
+void test_replace_2() {
+    char s1[MAX_STRING_SIZE] = "abcd rek";
+    char w1[] = "abc";
+    char w2[] = "def";
+    char s2[MAX_STRING_SIZE] = "abcd rek";
+
+    replace(s1, w1, w2);
+
+    ASSERT_STRING(s1, s2);
+}
+
+void test_replace_3() {
+    char s1[MAX_STRING_SIZE] = "";
+    char w1[] = "abc";
+    char w2[] = "def";
+    char s2[MAX_STRING_SIZE] = "";
+
+    replace(s1, w1, w2);
+
+    ASSERT_STRING(s1, s2);
+}
+
+void test_replace_4() {
+    char s1[MAX_STRING_SIZE] = "ab abc cd";
+    char w1[] = "abc";
+    char w2[] = "defg";
+    char s2[MAX_STRING_SIZE] = "ab defg cd";
+
+    replace(s1, w1, w2);
+
+    ASSERT_STRING(s1, s2);
+}
+
+void test_replace_5() {
+    char s1[MAX_STRING_SIZE] = "ab abc cd";
+    char w1[] = "abc";
+    char w2[] = "de";
+    char s2[MAX_STRING_SIZE] = "ab de cd";
+
+    replace(s1, w1, w2);
+
+    ASSERT_STRING(s1, s2);
+}
+
+void test_replace_6() {
+    char s1[MAX_STRING_SIZE] = "ab abc  cd abc hg  ";
+    char w1[] = "abc";
+    char w2[] = "defg";
+    char s2[MAX_STRING_SIZE] = "ab defg  cd defg hg  ";
+
+    replace(s1, w1, w2);
+
+    ASSERT_STRING(s1, s2);
+}
+
+void test_replace() {
+    test_replace_1();
+    test_replace_2();
+    test_replace_3();
+    test_replace_4();
+    test_replace_5();
+    test_replace_6();
+}
+
+void isLexicographicallyOrdered(char *s) {
 
 
 }
@@ -356,6 +459,7 @@ void test_tasks() {
     test_transformStringDigitToStartInWord();
     test_transformStringLetterToStartInWord();
     test_replaceDigitWithSpace();
+    test_replace();
 }
 
 

@@ -46,11 +46,14 @@ bool getWordReverse(char *rbegin, char *rend, WordDescriptor *word);
 //преобразовывает строку s, заменяя каждую цифру соответствующим ей числом пробелов.
 void replaceDigitWithSpace(char *s);
 
-//
-bool isWordEqual(WordDescriptor w1, WordDescriptor w2) {
+//возвращает 1, если слова w1 и w2 - одинаковые, и 0 - противном случае.
+int areWordsEqual(WordDescriptor w1, WordDescriptor w2);
 
 //заменяет все вхождения слова 𝑤1 на слово 𝑤2 в строке по указателю source.
 void replace ( char * source , char * w1 , char * w2 ) ;
+
+//возвращает 1, если слова данной строки упорядочены лексикографически, и 0 - в противном случае.
+void isLexicographicallyOrdered(char *s);
 
 
 void test_tasks();
