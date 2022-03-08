@@ -448,9 +448,72 @@ void test_replace() {
     test_replace_6();
 }
 
-void isLexicographicallyOrdered(char *s) {
+bool isLexicographicallyOrdered(char *s) {
+    WordDescriptor word;
+    int r = getWord(s, &word);
+    if (r == 0)
+        return true;
 
+    WordDescriptor lastWord;
+    lastWord.begin = word.begin;
+    lastWord.end = word.end;
+    r = getWord(lastWord.end, &word);
+    while (r==1) {
+        if (areWordsEqual(word, lastWord) < 0)
+            return false;
+        lastWord.begin = word.begin;
+        lastWord.end = word.end;
+        r = getWord(lastWord.end, &word);
+    }
+    return true;
+}
 
+void test_isLexicographicallyOrdered_1(){
+    char s[MAX_STRING_SIZE] = "ab abc abd";
+
+    assert(isLexicographicallyOrdered(s)==true);
+
+    fprintf(stderr, "test_isLexicographicallyOrdered_1 - OK\n");
+}
+
+void test_isLexicographicallyOrdered_2(){
+    char s[MAX_STRING_SIZE] = "";
+
+    assert(isLexicographicallyOrdered(s)==true);
+
+    fprintf(stderr, "test_isLexicographicallyOrdered_2 - OK\n");
+}
+
+void test_isLexicographicallyOrdered_3(){
+    char s[MAX_STRING_SIZE] = "ab ab ab";
+
+    assert(isLexicographicallyOrdered(s)==true);
+
+    fprintf(stderr, "test_isLexicographicallyOrdered_3 - OK\n");
+}
+
+void test_isLexicographicallyOrdered_4(){
+    char s[MAX_STRING_SIZE] = "abd ab abc";
+
+    assert(isLexicographicallyOrdered(s)==false);
+
+    fprintf(stderr, "test_isLexicographicallyOrdered_4 - OK\n");
+}
+
+void test_isLexicographicallyOrdered_5(){
+    char s[MAX_STRING_SIZE] = "klg hie abd";
+
+    assert(isLexicographicallyOrdered(s)==false);
+
+    fprintf(stderr, "test_isLexicographicallyOrdered_5 - OK\n");
+}
+
+void test_isLexicographicallyOrdered(){
+    test_isLexicographicallyOrdered_1();
+    test_isLexicographicallyOrdered_2();
+    test_isLexicographicallyOrdered_3();
+    test_isLexicographicallyOrdered_4();
+    test_isLexicographicallyOrdered_5();
 }
 
 void test_tasks() {
@@ -460,6 +523,7 @@ void test_tasks() {
     test_transformStringLetterToStartInWord();
     test_replaceDigitWithSpace();
     test_replace();
+    test_isLexicographicallyOrdered();
 }
 
 

@@ -29,6 +29,8 @@ ctype.h
 -
 stdbool.h
 -
+assert.h
+-
 assert_string.h
 D:/Dafa/Study/OP/course/libs/data_structures/string_/tasks/assert_string.h
 ../string_.h

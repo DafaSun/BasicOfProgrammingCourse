@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <stdbool.h>
+#include <assert.h>
 #include "assert_string.h"
 #include "../string_.h"
 
@@ -53,7 +54,7 @@ int areWordsEqual(WordDescriptor w1, WordDescriptor w2);
 void replace ( char * source , char * w1 , char * w2 ) ;
 
 //возвращает 1, если слова данной строки упорядочены лексикографически, и 0 - в противном случае.
-void isLexicographicallyOrdered(char *s);
+bool isLexicographicallyOrdered(char *s);
 
 
 void test_tasks();
