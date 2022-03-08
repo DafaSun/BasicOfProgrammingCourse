@@ -96,9 +96,19 @@ void test_removeExtraSpaces_2() {
     ASSERT_STRING(s1, s2);
 }
 
+void test_removeExtraSpaces_3() {
+    char s1[] = "";
+    char s2[] = "";
+
+    removeExtraSpaces(s1);
+
+    ASSERT_STRING(s1, s2);
+}
+
 void test_removeExtraSpaces() {
     test_removeExtraSpaces_1();
     test_removeExtraSpaces_2();
+    test_removeExtraSpaces_3();
 }
 
 int getWord(char *beginSearch, WordDescriptor *word) {
@@ -158,10 +168,20 @@ void test_transformStringDigitToStartInWord_3() {
     ASSERT_STRING(s1, s2);
 }
 
+void test_transformStringDigitToStartInWord_4() {
+    char s1[] = "";
+    char s2[] = "";
+
+    transformStringDigitToStartInWord(s1);
+
+    ASSERT_STRING(s1, s2);
+}
+
 void test_transformStringDigitToStartInWord() {
     test_transformStringDigitToStartInWord_1();
     test_transformStringDigitToStartInWord_2();
     test_transformStringDigitToStartInWord_3();
+    test_transformStringDigitToStartInWord_4();
 }
 
 void letterToStart(WordDescriptor word) {
@@ -210,18 +230,132 @@ void test_transformStringLetterToStartInWord_3() {
     ASSERT_STRING(s1, s2);
 }
 
+void test_transformStringLetterToStartInWord_4() {
+    char s1[] = "";
+    char s2[] = "";
+
+    transformStringLetterToStartInWord(s1);
+
+    ASSERT_STRING(s1, s2);
+}
+
 void test_transformStringLetterToStartInWord() {
     test_transformStringLetterToStartInWord_1();
     test_transformStringLetterToStartInWord_2();
     test_transformStringLetterToStartInWord_3();
+    test_transformStringLetterToStartInWord_4();
 }
 
+bool getWordReverse(char *rbegin, char *rend, WordDescriptor *word) {
+    word->end = findNonSpaceReverse(rbegin, rend) + 1;
+
+    if (*word->end == '\0')
+        return false;
+
+    word->begin = findSpaceReverse(word->begin, rend) + 1;
+
+    return true;
+}
+
+void replaceDigitWithSpace(char *s) {
+    char *end = getEndOfString(s);
+    char *r = copy(s, end, _stringBuffer);
+    *r = '\0';
+    char *readPtr = _stringBuffer;
+    char *recPtr = s;
+    while (*readPtr != '\0') {
+        if (isdigit(*readPtr)) {
+            int digit = *readPtr - '0';
+            for (int i = 0; i < digit; i++) {
+                *recPtr = ' ';
+                recPtr++;
+            }
+        } else {
+            *recPtr = *readPtr;
+            recPtr++;
+        }
+        readPtr++;
+    }
+    *recPtr = '\0';
+}
+
+void test_replaceDigitWithSpace_1() {
+    char s1[MAX_STRING_SIZE] = "";
+    char s2[] = "";
+
+    replaceDigitWithSpace(s1);
+
+    ASSERT_STRING(s1, s2);
+}
+
+void test_replaceDigitWithSpace_2() {
+    char s1[MAX_STRING_SIZE] = "1abc4d";
+    char s2[] = " abc    d";
+
+    replaceDigitWithSpace(s1);
+
+    ASSERT_STRING(s1, s2);
+}
+
+void test_replaceDigitWithSpace_3() {
+    char s1[MAX_STRING_SIZE] = "1!2";
+    char s2[] = " !  ";
+
+    replaceDigitWithSpace(s1);
+
+    ASSERT_STRING(s1, s2);
+}
+
+void test_replaceDigitWithSpace() {
+    test_replaceDigitWithSpace_1();
+    test_replaceDigitWithSpace_2();
+    test_replaceDigitWithSpace_3();
+}
+
+bool isWordEqual(WordDescriptor w1, WordDescriptor w2) {
+    if (w1.end - w1.begin != w2.end - w2.begin)
+        return false;
+
+    char *word1 = w1.begin;
+    char *word2 = w2.begin;
+    long long sizeOfWord = w1.end - w1.begin;
+
+    for (long long i = 0; i < sizeOfWord; i++) {
+        if (*word1 != *word2)
+            return false;
+        word1++;
+        word2++;
+    }
+
+    return true;
+}
+
+void replace(char *source, char *w1, char *w2) {
+    size_t w1Size = strlen_(w1);
+    size_t w2Size = strlen_(w2);
+    WordDescriptor word1 = {w1, w1 + w1Size};
+    WordDescriptor word2 = {w2, w2 + w2Size};
+
+    char *readPtr, *recPtr;
+    if (w1Size >= w2Size) {
+        readPtr = source;
+        recPtr = source;
+    } else {
+        copy(source, getEndOfString(source), _stringBuffer);
+        readPtr = _stringBuffer;
+        recPtr = source;
+    }
+
+
+
+}
 
 void test_tasks() {
     test_removeExtraSpaces();
     test_removeNonLetters();
     test_transformStringDigitToStartInWord();
     test_transformStringLetterToStartInWord();
+    test_replaceDigitWithSpace();
 }
 
 

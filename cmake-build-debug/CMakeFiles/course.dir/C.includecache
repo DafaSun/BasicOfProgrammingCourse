@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+D:/Dafa/Study/OP/course/libs/data_structures/string_/string_.c
+string_.h
+D:/Dafa/Study/OP/course/libs/data_structures/string_/string_.h
+
 D:/Dafa/Study/OP/course/libs/data_structures/string_/string_.h
 stdio.h
 -
@@ -27,10 +31,12 @@ stdio.h
 -
 ctype.h
 -
-../string_.h
-D:/Dafa/Study/OP/course/libs/data_structures/string_/string_.h
+stdbool.h
+-
 assert_string.h
 D:/Dafa/Study/OP/course/libs/data_structures/string_/tasks/assert_string.h
+../string_.h
+D:/Dafa/Study/OP/course/libs/data_structures/string_/string_.h
 
 D:/Dafa/Study/OP/course/main.c
 stdio.h

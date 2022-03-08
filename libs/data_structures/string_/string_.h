@@ -5,7 +5,9 @@
 #ifndef MAIN_C_STRING__H
 #define MAIN_C_STRING__H
 
-#define MAX_STRING_SIZE 15
+#define MAX_STRING_SIZE 100
+#define MAX_N_WORDS_IN_STRING 100
+#define MAX_WORD_SIZE 20
 
 #include <stdio.h>
 #include <assert.h>
