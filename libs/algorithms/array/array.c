@@ -7,15 +7,16 @@
 #include <limits.h >
 #include <assert.h >
 
-void inputArray_(int *const a, const size_t n) {
-    for (size_t i = 0; i < n; i++)
-        scanf("%d", &a[i]);
-}
-
-void outputArray_(const int *const a, const size_t n) {
+void outputArray_(const int *a, const size_t n) {
     for (size_t i = 0; i < n; i++)
         printf("%d ", a[i]);
     printf("\n");
+}
+
+
+void inputArray_(int *const a, const size_t n) {
+    for (size_t i = 0; i < n; i++)
+        scanf("%d", &a[i]);
 }
 
 void append_(int *const a, size_t *const n, const int value) {
@@ -126,4 +127,153 @@ size_t binarySearchMoreOrEqual_(const int *a, size_t n, int x) {
             right = middle;
     }
     return right;
+}
+
+void swap(int *a, int *b) {
+    int t = *a;
+    *a = *b;
+    *b = t;
+}
+
+bool isOrdered(int *a, size_t n) {
+    for (int i = 1; i < n; i++)
+        if (a[i - 1] > a[i])
+            return false;
+    return true;
+
+}
+
+void selectionSort(int *a, size_t size) {
+    for (int i = 0; i < size - 1; i++) {
+        int minPos = i;
+        for (int j = i + 1; j < size; j++)
+            if (a[j] < a[minPos])
+                minPos = j;
+        swap(&a[i], &a[minPos]);
+    }
+}
+
+long long getSelectionSortNComp(int *a, size_t n) {
+    long long nComps = 0;
+    for (int i = 0; ++nComps && i < n; i++) {
+        int min = a[i];
+        int minIndex = i;
+        for (int j = i + 1; ++nComps && j < n; j++)
+            if (++nComps && a[j] < min) {
+                min = a[j];
+                minIndex = j;
+            }
+        if (++nComps && i != minIndex)
+            swap(&a[i], &a[minIndex]);
+    }
+    return nComps;
+}
+
+void insertionSort(int *a, size_t size) {
+    for (size_t i = 1; i < size; i++) {
+        int t = a[i];
+        int j = i;
+        while (j > 0 && a[j - 1] > t) {
+            a[j] = a[j - 1];
+            j--;
+        }
+        a[j] = t;
+    }
+}
+
+long long getInsertionSortNComp(int *a, size_t n) {
+    long long nComps = 0;
+    for (size_t i = 1; ++nComps && i < n; i++) {
+        int t = a[i];
+        int j = i;
+        while (++nComps && j > 0 && ++nComps && a[j - 1] > t) {
+            a[j] = a[j - 1];
+            j--;
+        }
+        a[j] = t;
+    }
+    return nComps;
+}
+
+void bubbleSort(int *a, size_t size) {
+    for (size_t i = 0; i < size - 1; i++)
+        for (size_t j = size - 1; j > i; j--)
+            if (a[j - 1] > a[j])
+                swap(&a[j - 1], &a[j]);
+}
+
+long long getBubbleSortNComp(int *a, size_t n) {
+    long long nComps = 0;
+    for (size_t i = 0; ++nComps && i < n - 1; i++)
+        for (size_t j = n - 1; ++nComps && j > i; j--)
+            if (++nComps && a[j - 1] > a[j])
+                swap(&a[j - 1], &a[j]);
+    return nComps;
+}
+
+void combSort(int *a, size_t size) {
+    size_t step = size;
+    int swapped = 1;
+    while (step > 1 || swapped) {
+        if (step > 1)
+            step /= 1.24733;
+        swapped = 0;
+        for (size_t i = 0, j = i + step; j < size; ++i, ++j)
+            if (a[i] > a[j]) {
+                swap(&a[i], &a[j]);
+                swapped = 1;
+            }
+    }
+}
+
+long long getCombSortNComp(int *a, size_t n) {
+    long long nComps = 0;
+    size_t step = n;
+    int swapped = 1;
+    while (step > 1 || swapped) {
+        if (++nComps && ++nComps && step > 1)
+            step /= 1.24733;
+        else
+            ++nComps;
+        swapped = 0;
+        for (size_t i = 0, j = i + step; ++nComps && j < n; ++i, ++j)
+            if (++nComps && a[i] > a[j]) {
+                swap(&a[i], &a[j]);
+                swapped = 1;
+            }
+    }
+    return nComps + 2;
+}
+
+void shellSort(int *a, size_t size) {
+    for (int k = size / 2; k > 0; k /= 2)
+        for (int i = k; i < size; ++i)
+            for (int j = i - k; j >= 0 && a[j] > a[j + k]; j -= k)
+                swap(&a[j], &a[j + k]);
+}
+
+long long getShellSortNComp(int *a, size_t n) {
+    long long nComps = 0;
+    for (int k = n / 2; ++nComps && k > 0; k /= 2)
+        for (int i = k; ++nComps && i < n; ++i)
+            for (int j = i - k; ++nComps && j >= 0 && ++nComps && a[j] > a[j + k]; j -= k)
+                swap(&a[j], &a[j + k]);
+    return nComps;
+}
+
+void generateOrderedArray(int *a, size_t n) {
+    for (int i = 0; i < n; i++)
+        a[i] = i;
+}
+
+void generateRandomArray(int *a, size_t n) {
+    for (int i = 0; i < n; i++)
+        a[i] = rand();
+}
+
+
+void generateOrderedBackwards(int *a, size_t n) {
+    int j = 0;
+    for (int i = n - 1; i >= 0; i--, j++)
+        a[i] = j;
 }

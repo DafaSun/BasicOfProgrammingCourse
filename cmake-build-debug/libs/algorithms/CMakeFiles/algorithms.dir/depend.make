@@ -7,3 +7,7 @@ libs/algorithms/CMakeFiles/algorithms.dir/algorithm.c.obj: \
 libs/algorithms/CMakeFiles/algorithms.dir/array/array.c.obj: \
  ../libs/algorithms/array/array.c \
  ../libs/algorithms/array/array.h
+libs/algorithms/CMakeFiles/algorithms.dir/time/time.c.obj: \
+ ../libs/algorithms/array/array.h \
+ ../libs/algorithms/time/time.c \
+ ../libs/algorithms/time/time.h

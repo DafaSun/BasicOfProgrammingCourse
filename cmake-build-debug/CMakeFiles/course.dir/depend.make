@@ -5,6 +5,8 @@ CMakeFiles/course.dir/libs/data_structures/string_/string_.c.obj: \
  ../libs/data_structures/string_/string_.c \
  ../libs/data_structures/string_/string_.h
 CMakeFiles/course.dir/main.c.obj: \
+ ../libs/algorithms/array/array.h \
+ ../libs/algorithms/time/time.h \
  ../libs/data_structures/string_/string_.h \
  ../libs/data_structures/string_/tasks/assert_string.h \
  ../libs/data_structures/string_/tasks/tasks.h \

@@ -6,23 +6,29 @@
 
 #IncludeRegexTransform: 
 
-D:/Dafa/Study/OP/course/libs/algorithms/algorithm.c
-algorithm.h
-D:/Dafa/Study/OP/course/libs/algorithms/algorithm.h
-
-D:/Dafa/Study/OP/course/libs/algorithms/algorithm.h
-
-D:/Dafa/Study/OP/course/libs/algorithms/array/array.c
-array.h
-D:/Dafa/Study/OP/course/libs/algorithms/array/array.h
-stdio.h 
--
-limits.h 
--
-assert.h 
--
-
 D:/Dafa/Study/OP/course/libs/algorithms/array/array.h
 stddef.h 
 -
+stdlib.h
+-
+stdbool.h
+-
+math.h
+-
+
+D:/Dafa/Study/OP/course/libs/algorithms/time/time.c
+time.h
+D:/Dafa/Study/OP/course/libs/algorithms/time/time.h
+
+D:/Dafa/Study/OP/course/libs/algorithms/time/time.h
+stdlib.h
+-
+stdio.h
+-
+stdbool.h
+-
+time.h
+-
+../array/array.h
+D:/Dafa/Study/OP/course/libs/algorithms/array/array.h
 

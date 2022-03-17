@@ -5,7 +5,10 @@
 #ifndef COURSE_ARRAY_H
 #define COURSE_ARRAY_H
 
-# include <stddef.h >
+#include <stddef.h >
+#include <stdlib.h>
+#include <stdbool.h>
+#include <math.h>
 
 // ввод массива data размера n
 void inputArray_(int *a, size_t n);
@@ -65,5 +68,37 @@ int countIf_(const int *a, size_t n, int (*predicate )(int));
 // функции-предикату deletePredicate, записывает в n новый размер
 // массива
 void deleteIf_(int *a, size_t *n, int (*deletePredicate )(int));
+
+//возвращает значение 'истина', если массив а размера n отсортирован по неубыванию, и 'ложь' - в противном случае.
+bool isOrdered(int *a, size_t n);
+
+void selectionSort(int *a, size_t n);
+
+long long getSelectionSortNComp(int *a, size_t n);
+
+void insertionSort(int *a, size_t n);
+
+long long getInsertionSortNComp(int *a, size_t n);
+
+void bubbleSort(int *a, size_t size);
+
+long long getBubbleSortNComp(int *a, size_t n);
+
+void combSort(int *a, size_t size);
+
+long long getCombSortNComp(int *a, size_t n);
+
+void shellSort(int *a, size_t size);
+
+long long getShellSortNComp(int *a, size_t n);
+
+//генерируется случайный массив а размера n.
+void generateRandomArray(int *a, size_t n);
+
+//генерируется массив а размера n 0, 1, 2, ..., n - 1.
+void generateOrderedArray(int *a, size_t n);
+
+//генерируется массив а размера n n - 1, n - 2, ..., 0.
+void generateOrderedBackwards(int *a, size_t n);
 
 #endif //COURSE_ARRAY_H

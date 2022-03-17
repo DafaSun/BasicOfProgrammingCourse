@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "D:/Dafa/Study/OP/course/libs/algorithms/algorithm.c" "D:/Dafa/Study/OP/course/cmake-build-debug/libs/algorithms/CMakeFiles/algorithms.dir/algorithm.c.obj"
   "D:/Dafa/Study/OP/course/libs/algorithms/array/array.c" "D:/Dafa/Study/OP/course/cmake-build-debug/libs/algorithms/CMakeFiles/algorithms.dir/array/array.c.obj"
+  "D:/Dafa/Study/OP/course/libs/algorithms/time/time.c" "D:/Dafa/Study/OP/course/cmake-build-debug/libs/algorithms/CMakeFiles/algorithms.dir/time/time.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

@@ -91,19 +91,34 @@ libs/algorithms/CMakeFiles/algorithms.dir/array/array.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/algorithms.dir/array/array.c.s"
 	cd /d D:\Dafa\Study\OP\course\cmake-build-debug\libs\algorithms && C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:\Dafa\Study\OP\course\libs\algorithms\array\array.c -o CMakeFiles\algorithms.dir\array\array.c.s
 
+libs/algorithms/CMakeFiles/algorithms.dir/time/time.c.obj: libs/algorithms/CMakeFiles/algorithms.dir/flags.make
+libs/algorithms/CMakeFiles/algorithms.dir/time/time.c.obj: ../libs/algorithms/time/time.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Dafa\Study\OP\course\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object libs/algorithms/CMakeFiles/algorithms.dir/time/time.c.obj"
+	cd /d D:\Dafa\Study\OP\course\cmake-build-debug\libs\algorithms && C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\algorithms.dir\time\time.c.obj -c D:\Dafa\Study\OP\course\libs\algorithms\time\time.c
+
+libs/algorithms/CMakeFiles/algorithms.dir/time/time.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/algorithms.dir/time/time.c.i"
+	cd /d D:\Dafa\Study\OP\course\cmake-build-debug\libs\algorithms && C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E D:\Dafa\Study\OP\course\libs\algorithms\time\time.c > CMakeFiles\algorithms.dir\time\time.c.i
+
+libs/algorithms/CMakeFiles/algorithms.dir/time/time.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/algorithms.dir/time/time.c.s"
+	cd /d D:\Dafa\Study\OP\course\cmake-build-debug\libs\algorithms && C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:\Dafa\Study\OP\course\libs\algorithms\time\time.c -o CMakeFiles\algorithms.dir\time\time.c.s
+
 # Object files for target algorithms
 algorithms_OBJECTS = \
 "CMakeFiles/algorithms.dir/algorithm.c.obj" \
-"CMakeFiles/algorithms.dir/array/array.c.obj"
+"CMakeFiles/algorithms.dir/array/array.c.obj" \
+"CMakeFiles/algorithms.dir/time/time.c.obj"
 
 # External object files for target algorithms
 algorithms_EXTERNAL_OBJECTS =
 
 libs/algorithms/libalgorithms.a: libs/algorithms/CMakeFiles/algorithms.dir/algorithm.c.obj
 libs/algorithms/libalgorithms.a: libs/algorithms/CMakeFiles/algorithms.dir/array/array.c.obj
+libs/algorithms/libalgorithms.a: libs/algorithms/CMakeFiles/algorithms.dir/time/time.c.obj
 libs/algorithms/libalgorithms.a: libs/algorithms/CMakeFiles/algorithms.dir/build.make
 libs/algorithms/libalgorithms.a: libs/algorithms/CMakeFiles/algorithms.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\Dafa\Study\OP\course\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C static library libalgorithms.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\Dafa\Study\OP\course\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C static library libalgorithms.a"
 	cd /d D:\Dafa\Study\OP\course\cmake-build-debug\libs\algorithms && $(CMAKE_COMMAND) -P CMakeFiles\algorithms.dir\cmake_clean_target.cmake
 	cd /d D:\Dafa\Study\OP\course\cmake-build-debug\libs\algorithms && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\algorithms.dir\link.txt --verbose=$(VERBOSE)
 

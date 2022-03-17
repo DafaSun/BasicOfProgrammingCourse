@@ -158,6 +158,12 @@
 		<Unit filename="D:/Dafa/Study/OP/course/libs/algorithms/array/array.h">
 			<Option target="algorithms"/>
 		</Unit>
+		<Unit filename="D:/Dafa/Study/OP/course/libs/algorithms/time/time.c">
+			<Option target="algorithms"/>
+		</Unit>
+		<Unit filename="D:/Dafa/Study/OP/course/libs/algorithms/time/time.h">
+			<Option target="algorithms"/>
+		</Unit>
 		<Unit filename="D:/Dafa/Study/OP/course/libs/data_structures/bitset/bitset.c">
 			<Option target="data_structures"/>
 		</Unit>

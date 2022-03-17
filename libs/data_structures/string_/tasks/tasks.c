@@ -523,20 +523,99 @@ void getBagOfWords(BagOfWords *bag, char *s) {
         r = getWord(bag[i - 1].words->end, bag[i].words);
         i++;
     }
-    bag->size = i;
+    bag->size = i - 1;
 }
 
 void outputWord(WordDescriptor w) {
-    for (int i = 0; i < w.end - w.begin; i++)
-        putchar(*(w.begin + i));
+    char *r = w.begin;
+    while (r != w.end) {
+        putchar(*r);
+        r++;
+    }
     printf("\n");
+
+//    for (int i = 0; i < w.end - w.begin; i++)
+//        putchar(*(w.begin + i));
+//    printf("\n");
 }
+
 
 void outputWordsReverse(char *s) {
     getBagOfWords(&_bag, s);
-    for (int i = 0; i < _bag.size; i++)
+    printf("%lld*      ", _bag.size - 1);
+    for (int i = _bag.size - 1; i >= 0; i--) {
+        printf("%d - ", i);
         outputWord(_bag.words[i]);
+    }
 }
+
+
+void test_outputWordsReverse_1() {
+    char s[] = "abc def";
+
+    outputWordsReverse(s);
+}
+
+void test_outputWordsReverse_2() {
+    char s[] = "abckhg defghgh ghi hgf 45678";
+
+    outputWordsReverse(s);
+}
+
+void test_outputWordsReverse() {
+ //   test_outputWordsReverse_1();
+//    test_outputWordsReverse_2();
+}
+
+bool isPolindrom(WordDescriptor w) {
+    int sizeOfTheWord = w.end - w.begin;
+    char *fromBegin = w.begin;
+    char *fromEnd = w.end - 1;
+    for (int i = 0; i < sizeOfTheWord / 2; i++)
+        if (*fromBegin != *fromEnd)
+            return false;
+    return true;
+}
+
+int getWordDo(char *beginSearch, WordDescriptor *word) {
+    word->begin = beginSearch;
+    if (*word->begin == '\0')
+        return 0;
+    char *end = word->begin;
+    while ((*end != ',') && (*end != '\0'))
+        end++;
+    word->end = end;
+
+    return 1;
+}
+
+int getCountOfPolindrom(char *s) {
+    WordDescriptor w;
+    int r = getWordDo(s, &w);
+    int count = 0;
+    while (r != 0) {
+        if (isPolindrom(w))
+            count++;
+        printf(" +%d+  ", isPolindrom(w));
+        r = getWordDo(w.end+1, &w);
+    }
+    return count;
+}
+
+void test_getCountOfPolindrom_1() {
+    char s[] = "klk,hie,abdba";
+
+    printf(" /%d/  ", getCountOfPolindrom(s));
+
+//    assert(getCountOfPolindrom(s) == 2);
+//
+  //  fprintf(stderr, "test_getCountOfPolindrom_1 - OK\n");
+}
+
+void test_getCountOfPolindrom(){
+    test_getCountOfPolindrom_1();
+}
+
 
 
 void test_tasks() {
@@ -547,6 +626,8 @@ void test_tasks() {
     test_replaceDigitWithSpace();
     test_replace();
     test_isLexicographicallyOrdered();
+    test_outputWordsReverse();
+    test_getCountOfPolindrom();
 }
 
 

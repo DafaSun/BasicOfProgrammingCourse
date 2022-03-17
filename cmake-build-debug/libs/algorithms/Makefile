@@ -177,6 +177,30 @@ array/array.c.s:
 	cd /d D:\Dafa\Study\OP\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\algorithms\CMakeFiles\algorithms.dir\build.make libs/algorithms/CMakeFiles/algorithms.dir/array/array.c.s
 .PHONY : array/array.c.s
 
+time/time.obj: time/time.c.obj
+.PHONY : time/time.obj
+
+# target to build an object file
+time/time.c.obj:
+	cd /d D:\Dafa\Study\OP\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\algorithms\CMakeFiles\algorithms.dir\build.make libs/algorithms/CMakeFiles/algorithms.dir/time/time.c.obj
+.PHONY : time/time.c.obj
+
+time/time.i: time/time.c.i
+.PHONY : time/time.i
+
+# target to preprocess a source file
+time/time.c.i:
+	cd /d D:\Dafa\Study\OP\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\algorithms\CMakeFiles\algorithms.dir\build.make libs/algorithms/CMakeFiles/algorithms.dir/time/time.c.i
+.PHONY : time/time.c.i
+
+time/time.s: time/time.c.s
+.PHONY : time/time.s
+
+# target to generate assembly for a file
+time/time.c.s:
+	cd /d D:\Dafa\Study\OP\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\algorithms\CMakeFiles\algorithms.dir\build.make libs/algorithms/CMakeFiles/algorithms.dir/time/time.c.s
+.PHONY : time/time.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -192,6 +216,9 @@ help:
 	@echo ... array/array.obj
 	@echo ... array/array.i
 	@echo ... array/array.s
+	@echo ... time/time.obj
+	@echo ... time/time.i
+	@echo ... time/time.s
 .PHONY : help
 
 
