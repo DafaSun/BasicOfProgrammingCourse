@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 int main() {
-    timeExperiment();
+    compsExperiment();
 
     return 0;
 }

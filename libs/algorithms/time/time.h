@@ -29,10 +29,14 @@ typedef struct GeneratingFunc {
     char name[64]; // имя генератора, используемое при выводе
 } GeneratingFunc;
 
-void checkTime(void (*sortFunc )(int *, size_t), void (*generateFunc )(int *, size_t), size_t size, char *experimentName);
+void
+checkTime(void (*sortFunc )(int *, size_t), void (*generateFunc )(int *, size_t), size_t size, char *experimentName);
 
-void timeExperiment ();
+void timeExperiment();
 
+void checkComps(long long (*sortFunc )(int *, size_t), void (*generateFunc )(int *, size_t), size_t size,
+                char *experimentName);
 
+void compsExperiment();
 
 #endif //MAIN_C_TIME_H
