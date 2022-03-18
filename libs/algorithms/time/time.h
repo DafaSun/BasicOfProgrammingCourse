@@ -34,6 +34,11 @@ checkTime(void (*sortFunc )(int *, size_t), void (*generateFunc )(int *, size_t)
 
 void timeExperiment();
 
+void
+checkTimeBig(void (*sortFunc )(int *, size_t), void (*generateFunc )(int *, size_t), size_t size, char *experimentName);
+
+void timeExperimentBig();
+
 void checkComps(long long (*sortFunc )(int *, size_t), void (*generateFunc )(int *, size_t), size_t size,
                 char *experimentName);
 

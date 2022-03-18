@@ -10,11 +10,11 @@
 #include <stdbool.h>
 #include <math.h>
 
-// ввод массива data размера n
-void inputArray_(int *a, size_t n);
-
 // вывод массива data размера n
 void outputArray_(const int *a, size_t n);
+
+// ввод массива data размера n
+void inputArray_(int *a, size_t n);
 
 // возвращает значение первого вхождения элемента x
 // в массиве a размера n при его наличии, иначе - n
